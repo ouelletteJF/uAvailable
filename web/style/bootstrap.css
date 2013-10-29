@@ -465,7 +465,6 @@ h6,
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.1;
-  font-weight: bold;
 }
 
 h1 small,
@@ -776,14 +775,6 @@ pre code {
 .row {
   margin-right: -15px;
   margin-left: -15px;
-  
-}
-
-.span4{
-	width: 350px;
-	float: left;
-	min-height: 1px;
-	margin-left: 30px;display: block;
 }
 
 .row:before,
@@ -1751,14 +1742,9 @@ textarea.form-control {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 1px;
 }
 
-.welcome {
-  display: inline-block;
-  margin-bottom: 0;
-  vertical-align: middle;
-}
 .radio,
 .checkbox {
   display: block;
@@ -4504,19 +4490,17 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-image: linear-gradient(to bottom,#fff,#f2f2f2);
-  -webkit-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
--moz-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
-box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+  background-color: #222222;
+  border-color: #080808;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #428bca;
+  color: #999999;
 }
 
 .navbar-inverse .navbar-brand:hover,
 .navbar-inverse .navbar-brand:focus {
-  /*color: #ffffff;*/
+  color: #ffffff;
   background-color: transparent;
 }
 
@@ -4530,14 +4514,15 @@ box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 
 .navbar-inverse .navbar-nav > li > a:hover,
 .navbar-inverse .navbar-nav > li > a:focus {
-  color: #428bca;
+  color: #ffffff;
   background-color: transparent;
 }
 
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #428bca;
+  color: #ffffff;
+  background-color: #080808;
 }
 
 .navbar-inverse .navbar-nav > .disabled > a,
@@ -4568,12 +4553,13 @@ box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > .open > a:hover,
 .navbar-inverse .navbar-nav > .open > a:focus {
-  color: #428bca;
+  color: #ffffff;
+  background-color: #080808;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a:hover .caret {
-  border-top-color: #428bca;
-  border-bottom-color: #428bca;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 .navbar-inverse .navbar-nav > .dropdown > a .caret {
@@ -4584,8 +4570,8 @@ box-shadow: 0 1px 10px rgba(0,0,0,0.1);
 .navbar-inverse .navbar-nav > .open > a .caret,
 .navbar-inverse .navbar-nav > .open > a:hover .caret,
 .navbar-inverse .navbar-nav > .open > a:focus .caret {
-  border-top-color: #428bca;
-  border-bottom-color: #428bca;
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
 }
 
 @media (max-width: 767px) {
@@ -4937,13 +4923,12 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #F3F3F3;
+  background-color: #eeeeee;
 }
 
 .jumbotron h1 {
-line-height: 1;
-letter-spacing: -1px;
-color: inherit;
+  line-height: 1;
+  color: inherit;
 }
 
 .jumbotron p {
@@ -4958,14 +4943,13 @@ color: inherit;
   .jumbotron {
     padding-top: 48px;
     padding-bottom: 48px;
-	text-align: center;
   }
   .container .jumbotron {
     padding-right: 60px;
     padding-left: 60px;
   }
   .jumbotron h1 {
-    font-size: 60px;
+    font-size: 63px;
   }
 }
 

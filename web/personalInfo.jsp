@@ -1,6 +1,6 @@
 <%-- 
-    Document   : signup
-    Created on : 24-Oct-2013, 5:19:00 PM
+    Document   : personalInfo
+    Created on : 24-Oct-2013, 6:46:41 PM
     Author     : Steven
 --%>
 
@@ -32,49 +32,44 @@
     <body>
         <div class="container">
             <fieldset>
-                <legend>Sign up</legend>
+                <legend>Manage Personal Information</legend>
                 <form class="">
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputName" placeholder="First">
-                            <input type="text" class="form-control" id="inputName" placeholder="Last">
+                            <input type="text" class="form-control" id="inputName" value="Steven">
+                            <input type="text" class="form-control" id="inputName" value="Lacroix">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputEmail">
+                            <input type="text" class="form-control" id="inputEmail" value="stevenlacroixv4s973@gmail.com" disabled>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail">
+                            <input type="password" class="form-control" id="inputEmail" placeholder="Lacroix">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Confirm password</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> I agree to the uAvailable Terms of Service and Privacy Policy
-                                </label>
-                            </div>
+                            <input type="password" class="form-control" id="inputEmail" placeholder="Lacroix">
                         </div>
-                    </div>
-                    <!--<div class="form-group">
+                    </div>-->
+                    <div class="form-group">
                         <label for="inputPhone" class="col-lg-2 control-label">Mobile Phone</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputPhone">
+                            <input type="text" class="form-control" id="inputPhone" value="514-574-2346">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputBDay" class="col-lg-2 control-label">Birthday</label>
                         <div class="col-lg-10">
                             <select class="form-control" id="selectMonth">
-                                <option selected hidden>Month</option>
+                                <option selected hidden>February</option>
                                 <option>January</option>
                                 <option>February</option>
                                 <option>March</option>
@@ -88,33 +83,27 @@
                                 <option>November</option>
                                 <option>December</option>
                             </select>
-                            <input type="text" class="form-control" id="inputDay" placeholder="Day">
-                            <input type="text" class="form-control" id="inputYear" placeholder="Year">
+                            <input type="text" class="form-control" id="inputDay" value="18">
+                            <input type="text" class="form-control" id="inputYear" value="1992">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="select" class="col-lg-2 control-label">Gender</label>
                         <div class="col-lg-10">
                             <select class="form-control" id="selectGender">
-                                  <option selected hidden>I am..</option>
+                                  <option selected hidden>Male</option>
                                   <option>Male</option>
                                   <option>Female</option>
                             </select>
-
-                            <div class="checkbox">
-                                <label>
-                                  <input type="checkbox"> I agree to the uAvaiable Terms of Service and Privacy Policy
-                                </label>
-                            </div>
                         </div>
-                    </div>-->
+                    </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default">Cancel</button> 
-                            <button type="submit" class="btn btn-primary">Sign up</button> 
+                            <button type="submit" class="btn btn-primary">Confirm changes</button> 
                         </div>
                     </div>
-                </div>
+                </form>
             </fieldset>
         </div>
             
