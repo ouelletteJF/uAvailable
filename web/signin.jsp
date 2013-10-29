@@ -7,50 +7,60 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="shortcut icon" href="../../assets/ico/favicon.png">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="shortcut icon" href="../../assets/ico/favicon.png">
 
-    <title>uAvailable?</title>
+        <title>uAvailable?</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./style/bootstrap.css" rel="stylesheet">
+        <!-- Bootstrap core CSS -->
+        <link href="./style/bootstrap.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="./style/signin.css" rel="stylesheet">
+        <!-- Custom styles for this template -->
+        <link href="./style/signin.css" rel="stylesheet">
+        
+        <!-- Javascript -->
+        <script src="./javascript/js.js" type="text/javascript"></script>
+        <script src="./javascript/jquery.validate.js"></script>
+        
+       
+      
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="../../assets/js/html5shiv.js"></script>
+            <script src="../../assets/js/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->
-  </head>
-
-  <body>
-
-    <div class="container">
-
-      <form class="form-signin">
-        <img src="./images/logo.png">
-        <br></br>
-        <h4 class="form-signin-heading">Please sign in</h4>
-        <input type="text" class="form-control" placeholder="Email address" autofocus>
-        <input type="password" class="form-control" placeholder="Password">
-        <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
-        </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-      </form>
-
-    </div> <!-- /container -->
+    <body>
+        <div class="container">
+            <form class="form-signin" id="signinForm">
+                
+                    <img src="./images/logo.png">
+                    <br></br>
+                    <h4 class="form-signin-heading">Please sign in</h4>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Email address" autofocus name="inputEmail">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Password" name="inputPassword">
+                    </div>
+                    <label class="control-label" for="inputError">Please enter a valid email address</label>
+                    <label class="checkbox">
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                
+            </form>
+        </div> <!-- /container -->
 
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+    </body>
 </html>
 
