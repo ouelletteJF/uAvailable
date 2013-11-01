@@ -64,8 +64,7 @@ public class BlocDisponilites {
         this.optRappelBloc = optRappelBloc;
     }
     
-      
-    
+        
     
     
 }
