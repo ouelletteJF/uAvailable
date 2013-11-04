@@ -25,7 +25,7 @@ private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDeP
         return dateNaissance;
     }
 
-    public String geteMail() {
+    public String getEMail() {
         return eMail;
     }
 
@@ -61,7 +61,7 @@ private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDeP
         this.dateNaissance = dateNaissance;
     }
 
-    public void seteMail(String eMail) {
+    public void setEMail(String eMail) {
         this.eMail = eMail;
     }
 
