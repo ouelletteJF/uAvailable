@@ -14,7 +14,7 @@ import com.uavailable.entites.Tache;
 /**
 /**
  *
- * @author azazazqs
+ * @author DomyMb
  */
 public class TacheDAO extends DAO<Tache> {
     
