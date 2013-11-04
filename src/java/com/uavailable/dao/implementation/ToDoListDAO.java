@@ -14,7 +14,7 @@ import com.uavailable.entites.ToDoList;
 
 /**
  *
- * @author azazazqs
+ * @author DomyMb
  */
 public class ToDoListDAO extends DAO<ToDoList>  {
         
