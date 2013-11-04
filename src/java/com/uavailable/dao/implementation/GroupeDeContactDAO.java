@@ -13,7 +13,7 @@ import com.uavailable.dao.DAO;
 import com.uavailable.entites.GroupeDeContact;
 /**
  *
- * @author azazazqs
+ * @author DomyMb
  */
 public class GroupeDeContactDAO extends DAO<GroupeDeContact> {  
       public GroupeDeContactDAO(Connection c) {
@@ -149,35 +149,4 @@ public class GroupeDeContactDAO extends DAO<GroupeDeContact> {
         return null;
     }
       
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
