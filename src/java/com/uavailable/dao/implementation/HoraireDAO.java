@@ -13,7 +13,7 @@ import com.uavailable.dao.DAO;
 import com.uavailable.entites.Horaire;
 /**
  *
- * @author azazazqs
+ * @author DomyMb
  */
 public class HoraireDAO extends DAO<Horaire>  {
     
