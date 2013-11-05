@@ -21,6 +21,11 @@
 
         <!-- Custom styles for this template -->
         <link href="./style/signup.css" rel="stylesheet">
+        
+        <!-- Javascript -->
+        <script src="./javascript/jquery-2.0.3.js"></script>
+        <script src="./javascript/jquery.validate.js"></script>
+        <script src="./javascript/signup.js" type="text/javascript"></script>
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -37,77 +42,37 @@
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputName" placeholder="First">
-                            <input type="text" class="form-control" id="inputName" placeholder="Last">
+                            <input type="text" class="form-control" name="inputFirst" placeholder="First">
+                            <input type="text" class="form-control" name="inputLast" placeholder="Last">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputEmail" class="col-lg-2 control-label">Email</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputEmail">
+                            <input type="text" class="form-control" name="inputEmail">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Password</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail">
+                            <input type="password" class="form-control" name="inputPassword" id="inputPassword">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">Confirm password</label>
                         <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail">
+                            <input type="password" class="form-control" name="inputPassword_again">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-10">
                             <div class="checkbox">
                                 <label>
-                                    <input type="checkbox"> I agree to the uAvailable Terms of Service and Privacy Policy
+                                    <input type="checkbox" name="agreed"> I agree to the uAvailable Terms of Service and Privacy Policy
                                 </label>
                             </div>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <label for="inputPhone" class="col-lg-2 control-label">Mobile Phone</label>
-                        <div class="col-lg-10">
-                            <input type="text" class="form-control" id="inputPhone">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputBDay" class="col-lg-2 control-label">Birthday</label>
-                        <div class="col-lg-10">
-                            <select class="form-control" id="selectMonth">
-                                <option selected hidden>Month</option>
-                                <option>January</option>
-                                <option>February</option>
-                                <option>March</option>
-                                <option>April</option>
-                                <option>May</option>
-                                <option>June</option>
-                                <option>July</option>
-                                <option>August</option>
-                                <option>September</option>
-                                <option>October</option>
-                                <option>November</option>
-                                <option>December</option>
-                            </select>
-                            <input type="text" class="form-control" id="inputDay" placeholder="Day">
-                            <input type="text" class="form-control" id="inputYear" placeholder="Year">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="select" class="col-lg-2 control-label">Gender</label>
-                        <div class="col-lg-10">
-                            <select class="form-control" id="selectGender">
-                                  <option selected hidden>I am..</option>
-                                  <option>Male</option>
-                                  <option>Female</option>
-                            </select>
-
-                            <div class="checkbox">
-                                <label>
-                                  <input type="checkbox"> I agree to the uAvaiable Terms of Service and Privacy Policy
-                                </label>
-                            </div>
-                        </div>
-                    </div>-->
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default">Cancel</button> 
@@ -116,13 +81,6 @@
                     </div>
                 </div>
             </fieldset>
-        </div>
-            
-         <!-- /container -->
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        </div> <!-- /container -->
     </body>
 </html>

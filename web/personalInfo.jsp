@@ -21,6 +21,8 @@
 
         <!-- Custom styles for this template -->
         <link href="./style/signup.css" rel="stylesheet">
+        
+        <!-- Javascript -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -47,18 +49,6 @@
                             <input type="text" class="form-control" id="inputEmail" value="stevenlacroixv4s973@gmail.com" disabled>
                         </div>
                     </div>
-                    <!--<div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
-                        <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail" placeholder="Lacroix">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword" class="col-lg-2 control-label">Confirm password</label>
-                        <div class="col-lg-10">
-                            <input type="password" class="form-control" id="inputEmail" placeholder="Lacroix">
-                        </div>
-                    </div>-->
                     <div class="form-group">
                         <label for="inputPhone" class="col-lg-2 control-label">Mobile Phone</label>
                         <div class="col-lg-10">
@@ -105,13 +95,6 @@
                     </div>
                 </form>
             </fieldset>
-        </div>
-            
-         <!-- /container -->
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
+        </div> <!-- /container -->
     </body>
 </html>

@@ -23,11 +23,10 @@
         <link href="./style/signin.css" rel="stylesheet">
         
         <!-- Javascript -->
-        <script src="./javascript/js.js" type="text/javascript"></script>
+        <script src="./javascript/jquery-2.0.3.js"></script>
         <script src="./javascript/jquery.validate.js"></script>
+        <script src="./javascript/signin.js" type="text/javascript"></script>
         
-       
-      
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
             <script src="../../assets/js/html5shiv.js"></script>
@@ -48,7 +47,6 @@
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="Password" name="inputPassword">
                     </div>
-                    <label class="control-label" for="inputError">Please enter a valid email address</label>
                     <label class="checkbox">
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
@@ -56,11 +54,6 @@
                 
             </form>
         </div> <!-- /container -->
-
-
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
     </body>
 </html>
 
