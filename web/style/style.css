@@ -1,0 +1,32 @@
+.top_menu{
+    position: fixed;
+    background-color:  #eee;
+    width: 100%;
+    margin:auto;
+    display: block;
+    top: 0;
+    overflow: auto;
+    z-index: 1000;
+}
+.menu_icon{
+    margin:auto;
+    padding: -20px;
+}
+
+.bot_menu{
+    position: fixed;
+    background-color:  #eee;
+    width: 100%;
+    margin:auto;
+    display: block;
+    bot: 0;
+    overflow: auto;
+    z-index: 1000;
+}
+a{
+    color: grey;
+}
+
+a:hover{
+    color: black;
+}

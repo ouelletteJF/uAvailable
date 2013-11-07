@@ -47,7 +47,7 @@ html {
 }
 
 body {
-  padding-top: 40px;
+  padding-top: 10px;
   padding-bottom: 40px;
   background-color: #eee;
 }
@@ -748,8 +748,6 @@ pre code {
 }
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -1634,12 +1632,12 @@ legend {
   display: block;
   width: 100%;
   padding: 0;
-  margin-bottom: 20px;
   font-size: 21px;
   line-height: inherit;
   color: #333333;
   border: 0;
   border-bottom: 1px solid #e5e5e5;
+  padding-top:10px;
 }
 
 label {

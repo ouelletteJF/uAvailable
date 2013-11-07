@@ -20,7 +20,7 @@
         <link href="./style/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        
+        <link href="./style/style.css" rel="stylesheet">
         <!-- Javascript -->
 
         <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,30 +32,31 @@
 
     <body>
         <div class="container">
+            <div class="top_menu"><a href="index.jsp"><img class="menu_icon" src="./images/menu_icon.png"></a></div>
             <fieldset>
                 <legend>Contacts</legend>
                 <form class="">
                     <ul class="list-group">
-                        <a href=""><li class="list-group-item">Steven Lacroix</li></a>
-                        <a href=""><li class="list-group-item">Jean-François Ouellette</li></a>
-                        <a href=""><li class="list-group-item">Dominique Mbenza</li></a>
-                        <a href=""><li class="list-group-item">Kenzyme Le</li></a>
-                        <a href=""><li class="list-group-item">Sofiane</li></a>
-                        <a href=""><li class="list-group-item">Yanis</li></a>
-                        <a href=""><li class="list-group-item">Mark</li></a>
-                        <a href=""><li class="list-group-item">Sylvain</li></a>
-                        <a href=""><li class="list-group-item">Simon</li></a>
-                        <a href=""><li class="list-group-item">Étienne</li></a>
-                        <a href=""><li class="list-group-item">Steven Lacroix</li></a>
-                        <a href=""><li class="list-group-item">Jean-François Ouellette</li></a>
-                        <a href=""><li class="list-group-item">Dominique Mbenza</li></a>
-                        <a href=""><li class="list-group-item">Kenzyme Le</li></a>
-                        <a href=""><li class="list-group-item">Sofiane</li></a>
-                        <a href=""><li class="list-group-item">Yanis</li></a>
-                        <a href=""><li class="list-group-item">Mark</li></a>
-                        <a href=""><li class="list-group-item">Sylvain</li></a>
-                        <a href=""><li class="list-group-item">Simon</li></a>
-                        <a href=""><li class="list-group-item">Étienne</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Steven Lacroix</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Jean-François Ouellette</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Dominique Mbenza</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Kenzyme Le</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Sofiane</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Yanis</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Mark</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Sylvain</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Simon</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Étienne</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Steven Lacroix</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Jean-François Ouellette</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Dominique Mbenza</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Kenzyme Le</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Sofiane</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Yanis</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Mark</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Sylvain</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Simon</li></a>
+                        <a href="aContact.jsp"><li class="list-group-item">Étienne</li></a>
                     </ul>
                 </form>
                 <legend>Groups</legend>

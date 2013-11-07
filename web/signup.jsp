@@ -20,6 +20,7 @@
         <link href="./style/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
+        <link href="./style/style.css" rel="stylesheet">
         
         <!-- Javascript -->
         <script src="./javascript/jquery-2.0.3.js"></script>
