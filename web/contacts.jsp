@@ -20,7 +20,6 @@
         <link href="./style/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="./style/signup.css" rel="stylesheet">
         
         <!-- Javascript -->
 
@@ -57,6 +56,16 @@
                         <a href=""><li class="list-group-item">Sylvain</li></a>
                         <a href=""><li class="list-group-item">Simon</li></a>
                         <a href=""><li class="list-group-item">Étienne</li></a>
+                    </ul>
+                </form>
+                <legend>Groups</legend>
+                <form class="">
+                    <ul class="list-group">
+                        <a href=""><li class="list-group-item">School</li></a>
+                        <a href=""><li class="list-group-item">Work</li></a>
+                        <a href=""><li class="list-group-item">Hockey</li></a>
+                        <a href=""><li class="list-group-item">Dance</li></a>
+                        <a href=""><li class="list-group-item">Family</li></a>
                     </ul>
                 </form>
             </fieldset>

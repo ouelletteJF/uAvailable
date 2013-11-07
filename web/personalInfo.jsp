@@ -20,7 +20,6 @@
         <link href="./style/bootstrap.css" rel="stylesheet">
 
         <!-- Custom styles for this template -->
-        <link href="./style/signup.css" rel="stylesheet">
         
         <!-- Javascript -->
 
@@ -34,7 +33,7 @@
     <body>
         <div class="container">
             <fieldset>
-                <legend>Manage Personal Information</legend>
+                <legend>Manage Personal Informations</legend>
                 <form class="">
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>

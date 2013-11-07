@@ -38,7 +38,7 @@
         <div class="container">
             <form class="form-signin" id="signinForm">
                 
-                    <img src="./images/logo.png">
+                    <img class="logo" src="./images/logo.png">
                     <br></br>
                     <h4 class="form-signin-heading">Please sign in</h4>
                     <div class="form-group">
@@ -50,7 +50,7 @@
                     <label class="checkbox">
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                    <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                 
             </form>
         </div> <!-- /container -->
