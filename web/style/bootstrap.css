@@ -47,7 +47,9 @@ html {
 }
 
 body {
-  margin: 0;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
 }
 
 a:focus {
@@ -304,7 +306,7 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
-  background-color: #ffffff;
+  background-color: #eee;
 }
 
 input,
@@ -331,7 +333,7 @@ a {
 a:hover,
 a:focus {
   color: #2a6496;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 a:focus {
@@ -5244,7 +5246,7 @@ a.thumbnail:focus {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 5px 5px;
   margin-bottom: -1px;
   background-color: #ffffff;
   border: 1px solid #dddddd;
