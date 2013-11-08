@@ -70,6 +70,7 @@
                     </ul>
                 </form>
             </fieldset>
+            <div class="bot_menu"><a href="contacts.jsp"><input type="button" class="btn btn-primary" value="Contacts"></a></div>
         </div> <!-- /container -->
     </body>
 </html>

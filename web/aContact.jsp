@@ -33,6 +33,7 @@
 
     <body>
         <div class="container">
+            <div class="top_menu"><a href="contacts.jsp"><input type="button" class="btn btn-primary" value="Contacts"></a></div>
             <fieldset>
                 <legend>Steven Lacroix</legend>
                 <form class="">

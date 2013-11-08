@@ -4,7 +4,7 @@
     width: 100%;
     margin:auto;
     display: block;
-    top: 0;
+    top: 5px;
     overflow: auto;
     z-index: 1000;
 }
@@ -13,16 +13,24 @@
     padding: -20px;
 }
 
+.top_menu .btn{
+    padding: 3px;
+}
+
 .bot_menu{
     position: fixed;
     background-color:  #eee;
     width: 100%;
     margin:auto;
     display: block;
-    bot: 0;
     overflow: auto;
     z-index: 1000;
 }
+
+.bot_menu .btn{
+    padding: 3px;
+}
+
 a{
     color: grey;
 }
