@@ -3,14 +3,14 @@
     background-color:  #eee;
     width: 100%;
     margin:auto;
-    display: block;
-    top: 5px;
+    top: 0px;
     overflow: auto;
     z-index: 1000;
 }
 .menu_icon{
     margin:auto;
-    padding: -20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .top_menu .btn{
@@ -19,16 +19,23 @@
 
 .bot_menu{
     position: fixed;
-    background-color:  #eee;
-    width: 100%;
+    background-color:  black;
+    width: inherite;
     margin:auto;
     display: block;
     overflow: auto;
     z-index: 1000;
 }
 
-.bot_menu .btn{
-    padding: 3px;
+.left{
+    position:relative;
+    float: left;
+}
+
+.right{
+    position:relative;
+    float:right;
+    margin:auto; 
 }
 
 a{
