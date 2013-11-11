@@ -36,7 +36,7 @@
 
     <body>
         <div class="container">
-            <form class="form-signin" id="signinForm">
+            <form class="form-signin" id="signinForm" action="index.jsp" method="post">
                 
                     <img class="logo" src="./images/logo.png">
                     <br></br>
