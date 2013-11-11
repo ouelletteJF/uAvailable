@@ -38,7 +38,8 @@
         <div class="container">
             <fieldset>
                 <legend>Sign up</legend>
-                <form class="">
+                <form class="" action="personalInfo.jsp" method="post">
+                    
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
                         <div class="col-lg-10">
