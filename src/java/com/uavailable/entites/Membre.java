@@ -3,10 +3,10 @@ package com.uavailable.entites;
 
 
 public class Membre {
-private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDePasse,nomGroupe,nomHoraire,nomToDoList;
+private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDePasse,nomGroupe,nomToDoList;
 
-    public Membre(String numeroTelephone) {
-        this.numeroTelephone = numeroTelephone;
+    public Membre(String eMail) {
+        this.eMail = eMail;
     }
 
     public String getNumeroTelephone() {
@@ -37,11 +37,7 @@ private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDeP
         return nomGroupe;
     }
 
-    public String getNomHoraire() {
-        return nomHoraire;
-    }
-
-    public String getNomToDoList() {
+     public String getNomToDoList() {
         return nomToDoList;
     }
 
@@ -73,11 +69,7 @@ private String numeroTelephone,nomMembre,prenomMembre,dateNaissance,eMail,motDeP
         this.nomGroupe = nomGroupe;
     }
 
-    public void setNomHoraire(String nomHoraire) {
-        this.nomHoraire = nomHoraire;
-    }
-
-    public void setNomToDoList(String nomToDoList) {
+     public void setNomToDoList(String nomToDoList) {
         this.nomToDoList = nomToDoList;
     }
     
