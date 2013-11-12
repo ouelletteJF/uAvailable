@@ -26,8 +26,8 @@ public class MembreDAO extends DAO< Membre>{
     public boolean create(Membre x) {
         // TODO Auto-generated method stub
 
-        String req = "INSERT INTO membre (`numeroTelephone` , `nomMembre` , `prenomMembre` , `dateNaissance` , `eMail`, `motDePasse`, `nomGroupe`, `nomHoraire`, `nomToDoList`) "
-                + "VALUES ('" + x.getNumeroTelephone() + "','" + x.getNomMembre() + "','" + x.getPrenomMembre() + "','" + x.getDateNaissance() +  "','" + x.getEMail() +"','" + x.getMotDePasse() +"','" + x.getNomGroupe() +"','" + x.getNomHoraire() +"','" + x.getNomToDoList() +"')";
+        String req = "INSERT INTO membre (`numeroTelephone` , `nomMembre` , `prenomMembre` , `dateNaissance` , `eMail`, `motDePasse`, `nomGroupe`, `nomToDoList`) "
+                + "VALUES ('" + x.getNumeroTelephone() + "','" + x.getNomMembre() + "','" + x.getPrenomMembre() + "','" + x.getDateNaissance() +  "','" + x.getEMail() +"','" + x.getMotDePasse() +"','" + x.getNomGroupe() +"','" + x.getNomToDoList() +"')";
 
         //System.out.println("REQUETE "+req);
 
@@ -104,7 +104,7 @@ public class MembreDAO extends DAO< Membre>{
         try {
             String req = "UPDATE membre SET nomMembre = '" + x.getNomMembre() +   "',dateHeure = '" + x.getPrenomMembre() +
                     "',dateNaissance = '" + x.getDateNaissance() +  "',eMail ='" + x.getEMail() + "',motDePasse ='" + x.getMotDePasse() +
-                    "',nomGroupe ='" + x.getNomGroupe() +"',nomHoraire ='" + x.getNomHoraire() +"',nomToDoList ='" + x.getNomToDoList() + "'"
+                    "',nomGroupe ='" + x.getNomGroupe() +"',nomToDoList ='" + x.getNomToDoList() + "'"
                     + " WHERE numeroTelephone = '" + x.getNumeroTelephone() + "'";
             //System.out.println("REQUETE "+req);
             stm = cnx.createStatement();
@@ -151,6 +151,10 @@ public class MembreDAO extends DAO< Membre>{
         // TODO Auto-generated method stub
         
         return null;
+    }
+
+    public Membre Membre(String nom) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
