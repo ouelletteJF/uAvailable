@@ -38,7 +38,7 @@
         <div class="container">
             <fieldset>
                 <legend>Sign up</legend>
-                <form class=""  action="signup.jsp" method="post">
+                <form class=""  action="signup.do" method="post">
                     
                     <div class="form-group">
                         <label for="inputName" class="col-lg-2 control-label">Name</label>
@@ -77,6 +77,7 @@
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
                             <button class="btn btn-default">Cancel</button> 
+                            <input type="hidden" name="action" value="signup" /><br />
                             <button type="submit" class="btn btn-primary">Sign up</button> 
                         </div>
                     </div>

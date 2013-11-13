@@ -15,7 +15,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author ferdinand
+ * @author DomyMb
  */
 public class NewMain {
 
@@ -24,7 +24,7 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String  prenom = "Domy",nom = "inputLast" ,eMail = "inputEmail";
+        String  prenom = "yanis",nom = "Moussaoui" ,eMail = "input@Email";
                 
         
         
