@@ -10,7 +10,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 import com.uavailable.dao.DAO;
-import com.uavailable.entites.Tache;
+import com.uavailable.entites1.Tache;
 /**
 /**
  *
