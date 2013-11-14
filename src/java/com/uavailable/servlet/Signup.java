@@ -4,21 +4,26 @@
  * and open the template in the editor.
  */
 
-package com.uavailable.controleur;
+package com.uavailable.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.uavailable.entites.Membre;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.servlet.RequestDispatcher;
 
 /**
  *
  * @author DomyMb
  */
-public class controleurFrontal1 extends HttpServlet {
+public class Signup extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,28 +36,37 @@ public class controleurFrontal1 extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
-     String action = request.getParameter("action");
-        if (action !=null)
-        {
-            if ("signup".equals(action))
-            {
-                RequestDispatcher r = this.getServletContext().getRequestDispatcher("/signup"); 
-                r.forward(request, response);     
-                return;
-            }        
-            else
-            {   RequestDispatcher n = this.getServletContext().getRequestDispatcher("signin"); 
-                n.forward(request, response);     
-                return;}
-            
-            
-            
-            
+        response.setContentType("text/html;charset=UTF-8");
+        
+       String  prenom = request.getParameter("inputFirst"),
+                nom = request.getParameter("inputLast"),
+                courriel = request.getParameter("inputEmail"),
+                password= request.getParameter("inputPassword"),
+                password2= request.getParameter("inputPassword_again");
        
-        }
-    
- }
+       
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
+        
+        tx.begin();
+                Membre membre = new Membre(courriel,nom,prenom);
+             
+        em.persist(membre);
+        
+        tx.commit();
+        em.close();
+        emf.close();
+   
+         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/personnalInfo.jsp");
+         r.forward(request, response);
+        
+        
+        
+        
+        
+    }
+
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -92,6 +106,4 @@ public class controleurFrontal1 extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-       
-    }
-    
+}

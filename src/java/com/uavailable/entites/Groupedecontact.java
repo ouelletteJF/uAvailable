@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.uavailable.entites1;
+package com.uavailable.entites;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
@@ -18,33 +18,33 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author DomyMb
+ * @author Steven
  */
 @Entity
-@Table(name = "groupedecontact")
+@Table(name = "groupedecontact", catalog = "uavailable", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "GroupeDeContact.findAll", query = "SELECT g FROM GroupeDeContact g"),
-    @NamedQuery(name = "GroupeDeContact.findByNomGroupe", query = "SELECT g FROM GroupeDeContact g WHERE g.nomGroupe = :nomGroupe"),
-    @NamedQuery(name = "GroupeDeContact.findByNomMembre", query = "SELECT g FROM GroupeDeContact g WHERE g.nomMembre = :nomMembre")})
-public class GroupeDeContact implements Serializable {
+    @NamedQuery(name = "Groupedecontact.findAll", query = "SELECT g FROM Groupedecontact g"),
+    @NamedQuery(name = "Groupedecontact.findByNomGroupe", query = "SELECT g FROM Groupedecontact g WHERE g.nomGroupe = :nomGroupe"),
+    @NamedQuery(name = "Groupedecontact.findByNomMembre", query = "SELECT g FROM Groupedecontact g WHERE g.nomMembre = :nomMembre")})
+public class Groupedecontact implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @Column(name = "nomGroupe")
+    @Column(name = "nomGroupe", nullable = false, length = 20)
     private String nomGroupe;
     @Basic(optional = false)
-    @Column(name = "nomMembre")
+    @Column(name = "nomMembre", nullable = false, length = 20)
     private String nomMembre;
 
-    public GroupeDeContact() {
+    public Groupedecontact() {
     }
 
-    public GroupeDeContact(String nomGroupe) {
+    public Groupedecontact(String nomGroupe) {
         this.nomGroupe = nomGroupe;
     }
 
-    public GroupeDeContact(String nomGroupe, String nomMembre) {
+    public Groupedecontact(String nomGroupe, String nomMembre) {
         this.nomGroupe = nomGroupe;
         this.nomMembre = nomMembre;
     }
@@ -75,10 +75,10 @@ public class GroupeDeContact implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof GroupeDeContact)) {
+        if (!(object instanceof Groupedecontact)) {
             return false;
         }
-        GroupeDeContact other = (GroupeDeContact) object;
+        Groupedecontact other = (Groupedecontact) object;
         if ((this.nomGroupe == null && other.nomGroupe != null) || (this.nomGroupe != null && !this.nomGroupe.equals(other.nomGroupe))) {
             return false;
         }
@@ -87,7 +87,7 @@ public class GroupeDeContact implements Serializable {
 
     @Override
     public String toString() {
-        return "com.uavailable.entites1.GroupeDeContact[ nomGroupe=" + nomGroupe + " ]";
+        return "com.uavailable.entites.Groupedecontact[ nomGroupe=" + nomGroupe + " ]";
     }
     
 }

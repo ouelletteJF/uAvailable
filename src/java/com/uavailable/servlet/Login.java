@@ -4,26 +4,46 @@
  * and open the template in the editor.
  */
 
-package uavailable.web.mvc;
+package com.uavailable.servlet;
 
+import com.uavailable.entites.Membre;
+import com.uavailable.util.Connexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.uavailable.entites1.Membre;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author DomyMb
+ * @author Steven
  */
-public class signup extends HttpServlet {
+
+    /*
+    
+    $dao = new CalendrierDAO();
+    $calendriers = $dao->findByUser($_SESSION["connecte"]);
+    
+    $a = new Horraire($calendriers);
+    
+    put 
+    
+    
+    1- Connection //
+    2- Cree un objet Membre dans la session
+        DAO get nom.. prenom.. ntel.. etc.
+    3- L'objet Membre contient un attribut horaire
+        ObjetMembre.set(Horaire horaire);
+    4- L'attribut horaire est un objet d'Horaire
+    5- L'objet Horaire contient une liste de Calendrier
+        ObjetHoraire.set(DAO.finAllCalenderByUser(id));
+    6- Chaque Calendrier de la liste contiens une liste de Bloc
+    
+    */
+public class Login extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,32 +56,18 @@ public class signup extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        //String  u = request.getParameter("username");
+        String  u = "bob";
+                
+        Connexion.setUrl(this.getServletContext().getInitParameter("urlBd"));
+        //MembreDAO dao= new MembreDAO(Connexion.getInstance());
+        //Membre membre = dao.find(u.trim());
         
-       String  prenom = request.getParameter("inputFirst"),
-                nom = request.getParameter("inputLast"),
-                eMail = request.getParameter("inputEmail"),
-                password= request.getParameter("inputPassword"),
-                password2= request.getParameter("inputPassword_again");
-       
-       
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
-        
-        tx.begin();
-                Membre membre = new Membre(eMail,nom,prenom);
-             
-        em.persist(membre);
-        
-        tx.commit();
-        em.close();
-        emf.close();
-   
-         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/personnalInfo.jsp");
-         r.forward(request, response);
-        
-        
+        //connexion OK
+        /*HttpSession session = request.getSession(true);
+        session.setAttribute("Membre", u);
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/schedule.jsp");
+        r.forward(request, response);*/
         
         
         
