@@ -1,0 +1,47 @@
+.top_menu{
+    position: fixed;
+    background-color:  #eee;
+    width: 100%;
+    margin:auto;
+    top: 0px;
+    overflow: auto;
+    z-index: 1000;
+}
+.menu_icon{
+    margin:auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.top_menu .btn{
+    padding: 3px;
+}
+
+.bot_menu{
+    position: fixed;
+    background-color:  black;
+    width: inherite;
+    margin:auto;
+    display: block;
+    overflow: auto;
+    z-index: 1000;
+}
+
+.left{
+    position:relative;
+    float: left;
+}
+
+.right{
+    position:relative;
+    float:right;
+    margin:auto; 
+}
+
+a{
+    color: grey;
+}
+
+a:hover{
+    color: black;
+}

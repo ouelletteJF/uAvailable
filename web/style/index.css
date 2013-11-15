@@ -1,0 +1,24 @@
+.form-menu .logo{
+    display:block;
+    margin:auto;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    margin: 10px;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    font-size: 18px;
+    height: 50px;
+    text-align: center;
+}
+
+.form-menu .icon{
+    padding: 5px 10px;
+    float:left;
+}
+
+.form-menu .arrow_icon{
+    float: right;
+    padding: 5px 10px;
+}
