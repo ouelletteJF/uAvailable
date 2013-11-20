@@ -27,18 +27,22 @@ public class Horaire {
         this.calendriers = l;
     }
     
-    // Opérations sur les Listes
-    public Boolean creerCalendrier(Integer idL, String nom, String desc, String coul, HashMap<Integer, BlocDisponibilite> c, Integer idM) {
-        if( calendriers.put(idL, new Calendrier(idL, nom, desc, coul, c, idM)) != null )
+    // Opérations sur les Calendriers
+    public Boolean creerCalendrier(Integer idC, String nom, String desc, String coul, String optPartage, HashMap<Integer, BlocDisponibilite> b, String idM) {
+        if( calendriers.put(idC, new Calendrier(idC, nom, desc, coul, optPartage, b, idM)) != null )
             return true;
         
         return false;
+        
+        // return calendriers.put( idC, new Calendrier(idC, nom, desc, coul, optPartage, b, idM) ); 
     }
     public Boolean supprimerCalendrier(Calendrier c) {
         if( calendriers.remove( c.getId() ) != null )
             return true;
         
         return false;
+        
+        // return calendriers.remove( c.getId() );
     }
     public Boolean modifierCalendrier(Calendrier c) {
         if( calendriers.containsKey( c.getId() )  ) {
@@ -49,26 +53,30 @@ public class Horaire {
         return false;
     }
     
-    // Opérations sur les Taches
-    public Boolean creerBloc(Integer id, boolean complete, Date dateButoire, String desc, String nom, String prio, String rappel, Integer idListe) {
+    // Opérations sur les Blocs
+    public Boolean creerBloc(Integer idB, String nom, String desc, Date deb, Date fin, String rappel, String type, Integer idC) {
             
-        if( calendriers.get(idListe).getTaches().put( id, new Tache(id, complete, dateButoire, desc, nom, prio, rappel, idListe) ) != null )
+        if( calendriers.get(idC).getBlocs().put( idB, new BlocDisponibilite(idB, nom, desc, deb, fin, rappel, type, idC) ) != null )
             return true;
         
         return false;
         
-    }
-    public Boolean supprimerBloc(Tache t) {
+        // return calendriers.get(idC).getBlocs().put( idB, new BlocDisponibilite(idB, nom, desc, deb, fin, rappel, type, idC) );
         
-        if( calendriers.get( t.getIdListe() ).getTaches().remove( t.getId() ) != null )
+    }
+    public Boolean supprimerBloc(BlocDisponibilite b) {
+        
+        if( calendriers.get( b.getIdCalendrier() ).getBlocs().remove( b.getId() ) != null )
             return true;
         
         return false;
         
-    }
-    public Boolean modifierBloc(Tache t) {
+        // return calendriers.get( b.getIdCalendrier() ).getBlocs().remove( b.getId() );
         
-        if( calendriers.get( t.getIdListe() ).getTaches().put( t.getId(), t ) != null )
+    }
+    public Boolean modifierBloc(BlocDisponibilite b) {
+        
+        if( calendriers.get( b.getIdCalendrier() ).getBlocs().put( b.getId(), b ) != null )
             return true;
         
         return false;

@@ -64,7 +64,7 @@ public class Liste implements Serializable {
 
     // CONSTRUCTEURS
     public Liste() { this(null, "", "", "", null, null); }
-    public Liste(Integer idL, Integer idM, String nom) { this(idL, nom, "", "", null, idM); }
+    public Liste(Integer idL, Integer idM, String nom, String couleur) { this(idL, nom, "", couleur, null, idM); }
     public Liste(Integer idL, String nom, String description, String couleur, HashMap<Integer, Tache> t, Integer idM) {
         this.id = idL;
         this.nom = nom;

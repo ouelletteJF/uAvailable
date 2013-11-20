@@ -48,7 +48,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Membre implements Serializable {
     private static final long serialVersionUID = 1L;
     
-    @EmbeddedId
+    @Id
+    private Integer id;
+    
+    @Embedded
     private Identifiants identifiants;
     
     @Column(name = "nom",  length = 30)

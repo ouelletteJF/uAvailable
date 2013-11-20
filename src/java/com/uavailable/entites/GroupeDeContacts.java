@@ -1,12 +1,12 @@
 /*
- *	Fichier:	DAO.java
- *	Contenu:	Interface qui sert de base aux classes du DAO
+ *	Fichier:	GroupeDeContacts.java
+ *	Contenu:	Classe GroupeDecontacts
  *
  *	Auteur:		Jean-François Ouellette
  *	Version:	1.0
  *
- *	Date de création:	13 octobre 2013
- *	Dernière modification:	13 octobre 2013
+ *	Date de création:	?
+ *	Dernière modification:	14 novembre 2013
  *	Raison mise à jour:	-
  *
  *	À faire:    -
@@ -35,15 +35,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "GroupeDeContacts.findAll", query = "SELECT g FROM GroupeDeContacts g"),
     @NamedQuery(name = "GroupeDeContacts.findByNomGroupe", query = "SELECT g FROM GroupeDeContacts g WHERE g.nomGroupe = :nomGroupe"),
-    @NamedQuery(name = "GroupeDeContacts.findByNomMembre", query = "SELECT g FROM GroupeDeContacts g WHERE g.nomMembre = :nomMembre")})
+    })
 public class GroupeDeContacts implements Serializable {
     private static final long serialVersionUID = 1L;
+    
     @Id
-    @Basic(optional = false)
-    @Column(name = "nomGroupe", nullable = false, length = 20)
+    @Column(name = "nomGroupe")
     private String nomGroupe;
-    @Basic(optional = false)
-    @Column(name = "nomMembre", nullable = false, length = 20)
+
+    @Column(name = "nomMembre")
     private String nomMembre;
 
     public GroupeDeContacts() {

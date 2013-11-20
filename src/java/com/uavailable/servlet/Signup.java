@@ -50,7 +50,7 @@ public class Signup extends HttpServlet {
         EntityTransaction tx = em.getTransaction();
         
         tx.begin();
-        Membre membre = new Membre(courriel,nom,prenom);
+        Membre membre = new Membre();
              
         em.persist(membre);
         
@@ -60,11 +60,6 @@ public class Signup extends HttpServlet {
    
          RequestDispatcher r = this.getServletContext().getRequestDispatcher("/personnalInfo.jsp");
          r.forward(request, response);
-        
-        
-        
-        
-        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

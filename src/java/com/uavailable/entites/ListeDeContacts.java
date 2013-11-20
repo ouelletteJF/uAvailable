@@ -15,10 +15,32 @@
 
 package com.uavailable.entites;
 
-/**
- *
- * @author JF
- */
+import java.util.HashMap;
+
 public class ListeDeContacts {
     
+    private HashMap<String, Membre> contacts;
+    
+    // CONSTRUCTEURS
+    public ListeDeContacts() { this(null); }
+    public ListeDeContacts(HashMap<String, Membre> c) {
+        this.contacts = c;
+    }
+    
+    // CONTACTS
+    public void setContacts(HashMap<String, Membre> c) {
+        this.contacts = c;
+    }
+    public HashMap<String, Membre> getContacts() {
+        return this.contacts;
+    }
+    
+    /*
+    public Boolean ajouterContact(Membre m) {
+        this.contacts.put(, m)
+    }
+    
+    public Boolean supprimerContact() {
+        
+    }*/
 }
