@@ -1,7 +1,15 @@
 <%-- 
-    Document   : contacts
-    Created on : Nov 3, 2013, 8:14:11 PM
-    Author     : Steven
+    Fichier:	contacts.jsp
+    Contenu:	Page qui liste tous les contacts
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	3 novembre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,7 +1,15 @@
 <%-- 
-    Document   : aContact
-    Created on : Nov 3, 2013, 8:14:33 PM
-    Author     : Steven
+    Fichier:	aContact.jsp
+    Contenu:	Page qui affiche la fiche d'un contact
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	3 novembre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

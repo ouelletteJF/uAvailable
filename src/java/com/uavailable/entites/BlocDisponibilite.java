@@ -70,7 +70,7 @@ public class BlocDisponibilite implements Serializable {
     @Column(name = "idCalendrier")
     private int idCalendrier;
 
-    public BlocDisponibilite() { this(null, "", "", null, null, "", "", null); }
+    public BlocDisponibilite() { }
     public BlocDisponibilite(Integer idB, String nom, Date debut, String type, Integer idC) { this(idB, nom, "", debut, null, "", type, idC); }
     public BlocDisponibilite(Integer id, String nom, String description, Date debut, Date fin, String rappel, String type, Integer idCalendrier) {
         this.id = id;

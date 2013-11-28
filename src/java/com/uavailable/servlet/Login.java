@@ -6,43 +6,26 @@
 
 package com.uavailable.servlet;
 
-import com.uavailable.entites.Membre;
-import com.uavailable.util.Connexion;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.uavailable.entites.Membre;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author Steven
- */
 
-    /*
-    
-    $dao = new CalendrierDAO();
-    $calendriers = $dao->findByUser($_SESSION["connecte"]);
-    
-    $a = new Horraire($calendriers);
-    
-    put 
-    
-    
-    1- Connection //
-    2- Cree un objet Membre dans la session
-        DAO get nom.. prenom.. ntel.. etc.
-    3- L'objet Membre contient un attribut horaire
-        ObjetMembre.set(Horaire horaire);
-    4- L'attribut horaire est un objet d'Horaire
-    5- L'objet Horaire contient une liste de Calendrier
-        ObjetHoraire.set(DAO.finAllCalenderByUser(id));
-    6- Chaque Calendrier de la liste contiens une liste de Bloc
-    
-    */
 public class Login extends HttpServlet {
 
     /**
@@ -54,24 +37,82 @@ public class Login extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        //String  u = request.getParameter("username");
-        String  u = "bob";
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        RequestDispatcher r;
+        
+        Membre  unMembre = null;
+        String  u = request.getParameter("inputEmail"),
+                p = request.getParameter("inputPassword"),
+                mdp = null;
+
+        // Si aucun courriel n'est saisi...
+        if (u == null || u.trim().equalsIgnoreCase(""))     
+        {
+            request.setAttribute("message", "Courriel obligatoire.");
+            r = this.getServletContext().getRequestDispatcher("login.jsp");
+            r.forward(request, response);
+            return;
+        }
+
+        // ?
+        try {
+            Class.forName(this.getServletContext().getInitParameter("piloteJdbc"));
+        } 
+        catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
-        Connexion.setUrl(this.getServletContext().getInitParameter("urlBd"));
-        //MembreDAO dao= new MembreDAO(Connexion.getInstance());
-        //Membre membre = dao.find(u.trim());
+        // Préparation de la récupération des données dans la BD
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tx = em.getTransaction();
         
-        //connexion OK
-        /*HttpSession session = request.getSession(true);
-        session.setAttribute("Membre", u);
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/schedule.jsp");
-        r.forward(request, response);*/
+        Query qFindByEmail = em.createNamedQuery("Membre.findByCourriel");
+        qFindByEmail.setParameter("courriel", u);
         
+        tx.begin();
+
+        List<Membre> resultats = qFindByEmail.getResultList();
+        System.out.println("THE LIST : " + resultats);
         
+        // Si au moins un résultat est retourné...
+        if (resultats.size() > 0) {
+            unMembre = resultats.get(0);
+            System.out.println("LE MEMBRE DUDE : " + unMembre);
+            mdp = unMembre.getMotDePasse();
+            
+            // Si le mot de passe est incorrect...
+            if ( !mdp.equals(p) )    
+            {
+                request.setAttribute("message", "Mot de passe incorrect.");
+                r = this.getServletContext().getRequestDispatcher("/login.jsp");
+            }
+            
+            // Si l'authentification réussit...
+            else    
+            { 
+                tx.commit();
+                
+                HttpSession session = request.getSession(true);
+                session.setAttribute("user", unMembre);
+                
+                r = this.getServletContext().getRequestDispatcher("/index.jsp");
+            }
+        }
         
+        // Sinon, si l'utilisateur est inexistant...
+        else {
+            request.setAttribute("message", "Membre " + u + " inexistant.");
+            r = this.getServletContext().getRequestDispatcher("/login.jsp");
+        }
+        
+        em.close();
+        emf.close();
+        r.forward(request, response);
     }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

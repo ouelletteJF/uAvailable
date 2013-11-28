@@ -1,3 +1,4 @@
+
 /*
  *	Fichier:	Horaire.java
  *	Contenu:	Classe Horaire - NON PRÉSENTE DANS LA BD
@@ -25,6 +26,14 @@ public class Horaire {
     public Horaire() { this(null); }
     public Horaire( HashMap<Integer, Calendrier> l ) {
         this.calendriers = l;
+    }
+    
+    // CALENDRIERS
+    public HashMap<Integer, Calendrier> getCalendriers() {
+        return this.calendriers;
+    }
+    public void setCalendriers(HashMap<Integer, Calendrier> c) {
+        this.calendriers = c;
     }
     
     // Opérations sur les Calendriers

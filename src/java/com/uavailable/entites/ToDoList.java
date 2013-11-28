@@ -27,6 +27,14 @@ public class ToDoList {
         this.listes = l;
     }
     
+    // LISTES
+    public HashMap<Integer, Liste> getListes() {
+        return this.listes;
+    }
+    public void setListes(HashMap<Integer, Liste> l) {
+        this.listes = l;
+    }
+    
     // Opérations sur les Listes
     public Boolean creerListe(Integer idL, String nom, String desc, String coul, HashMap<Integer, Tache> t, Integer idM) {
         if( listes.put(idL, new Liste(idL, nom, desc, coul, t, idM)) != null )
@@ -34,8 +42,8 @@ public class ToDoList {
         
         return false;
     }
-    public Boolean supprimerListe(Liste l) {
-        if( listes.remove( l.getId() ) != null )
+    public Boolean supprimerListe(Integer id) {
+        if( listes.remove( id ) != null )
             return true;
         
         return false;
@@ -58,9 +66,9 @@ public class ToDoList {
         return false;
         
     }
-    public Boolean supprimerTache(Tache t) {
+    public Boolean supprimerTache(Integer idL, Integer idT) {
         
-        if( listes.get( t.getIdListe() ).getTaches().remove( t.getId() ) != null )
+        if( listes.get( idL ).getTaches().remove( idT ) != null )
             return true;
         
         return false;

@@ -46,6 +46,76 @@
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet EditPersonalInfo -->
+    <servlet>
+        <servlet-name>editInfos</servlet-name>
+        <servlet-class>com.uavailable.servlet.EditPersonalInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editInfos</servlet-name>
+        <url-pattern>/editInfos</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet AddList -->
+    <servlet>
+        <servlet-name>addList</servlet-name>
+        <servlet-class>com.uavailable.servlet.AddList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addList</servlet-name>
+        <url-pattern>/addList</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet AddTask -->
+    <servlet>
+        <servlet-name>addTask</servlet-name>
+        <servlet-class>com.uavailable.servlet.AddTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addTask</servlet-name>
+        <url-pattern>/addTask</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet DeleteList -->
+    <servlet>
+        <servlet-name>deleteList</servlet-name>
+        <servlet-class>com.uavailable.servlet.DeleteList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteList</servlet-name>
+        <url-pattern>/deleteList</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet DeleteTask -->
+    <servlet>
+        <servlet-name>deleteTask</servlet-name>
+        <servlet-class>com.uavailable.servlet.DeleteTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteTask</servlet-name>
+        <url-pattern>/deleteTask</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet EditList -->
+    <servlet>
+        <servlet-name>editList</servlet-name>
+        <servlet-class>com.uavailable.servlet.EditList</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editList</servlet-name>
+        <url-pattern>/editList</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet EditTask -->
+    <servlet>
+        <servlet-name>editTask</servlet-name>
+        <servlet-class>com.uavailable.servlet.EditTask</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>editTask</servlet-name>
+        <url-pattern>/editTask</url-pattern>
+    </servlet-mapping>
+    
     
     <session-config>
         <session-timeout>

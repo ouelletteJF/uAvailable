@@ -1,7 +1,15 @@
 <%-- 
-    Document   : signup
-    Created on : 24-Oct-2013, 5:19:00 PM
-    Author     : Steven
+    Fichier:	aContact.jsp
+    Contenu:	Page qui affiche le formulaire d'inscription
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	24 octobre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

@@ -1,11 +1,11 @@
 <%-- 
-    Fichier:	schedule.jsp
-    Contenu:	Page qui l'horaire du membre (ou d'un contact?)
+    Fichier:	createList.jsp
+    Contenu:	Page qui affiche le panneau de création d'une liste dans la To-Do List
 
-    Auteur:	Steven Lacroix
+    Auteur:	Jean-François Ouellette
     Version:	1.0
 
-    Date de création:	12 novembre 2013
+    Date de création:	25 novembre 2013
     Dernière modification:	-
     Raison mise à jour:	-
 
@@ -21,9 +21,7 @@
     </head>
     <body>
         <h1>Hello World!</h1>
-<% 
-         out.println("<p class=\"resultat\">"+session.getAttribute("Membre")+", vous êtes connectés. "+
-                        "<a href=\"logout.do?action=logout\">déconnexion</a></p>");
-%>
+        
+        <!-- L'action du formulaire sera : /addList.do?action=addTask -->
     </body>
 </html>

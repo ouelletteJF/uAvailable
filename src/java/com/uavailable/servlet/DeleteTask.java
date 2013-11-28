@@ -1,34 +1,35 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+ *	Fichier:	DeleteTask.java
+ *	Contenu:	Servlet qui assure la suppression d'une tâche dans la To-Do List
+ *
+ *	Auteur:		Jean-François Ouellette
+ *	Version:	1.0
+ *
+ *	Date de création:	25 novembre 2013
+ *	Dernière modification:	-
+ *	Raison mise à jour:	-
+ *
+ *	À faire:    -
+ *
+*/
 package com.uavailable.servlet;
 
+import com.uavailable.entites.Membre;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.uavailable.entites.Membre;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author DomyMb
- */
-public class Signup extends HttpServlet {
+public class DeleteTask extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -37,35 +38,24 @@ public class Signup extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        
         HttpSession session = request.getSession(true);
+        Membre m = (Membre) session.getAttribute("user");
         
-        String  prenom = request.getParameter("inputFirst"),
-                nom = request.getParameter("inputLast"),
-                courriel = request.getParameter("inputEmail"),
-                password = request.getParameter("inputPassword");
-       
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
+        // Suppression de la tâche au niveau local
+        m.getToDoList().supprimerTache( (Integer) request.getAttribute("idL"), (Integer) request.getAttribute("idT") );
         
-        Membre membre = new Membre(courriel, nom, prenom, password);
-        System.out.println("Membre : " + membre);
+        // Mise à jour au niveau du serveur
+        // Appel du DAO?
         
-        EntityTransaction t = em.getTransaction();
-        t.begin();
-        
-        em.persist(membre);
-        t.commit();
-        
-        em.close();
-        emf.close();
-        
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login.jsp");
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
         r.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -79,7 +69,8 @@ public class Signup extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -101,5 +92,4 @@ public class Signup extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

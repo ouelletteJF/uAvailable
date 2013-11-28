@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Calendrier.findAll", query = "SELECT c FROM Calendrier c"),
     @NamedQuery(name = "Calendrier.findById", query = "SELECT c FROM Calendrier c WHERE c.id = :id"),
     @NamedQuery(name = "Calendrier.findByNom", query = "SELECT c FROM Calendrier c WHERE c.nom = :nom"),
-    @NamedQuery(name = "Calendrier.findByIdMembre", query = "SELECT c FROM Calendrier c WHERE c.idMembre = :courrielMembre")})
+    @NamedQuery(name = "Calendrier.findByIdMembre", query = "SELECT c FROM Calendrier c WHERE c.courrielMembre = :courrielMembre")})
 public class Calendrier implements Serializable {
     private static final long serialVersionUID = 1L;
     

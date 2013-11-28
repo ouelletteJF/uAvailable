@@ -1,7 +1,15 @@
 <%-- 
-    Document   : index
-    Created on : 2013-10-08, 10:49:00
-    Author     : Usager
+    Fichier:	index.jsp
+    Contenu:	Page qui sert de template. Les différents contenus sont insérés dans cette page (le header, le menu et le footer restent donc inchangés).
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	3 novembre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -42,10 +50,26 @@
                     <img class="logo" src="./images/logo.png">
                     <br></br>
                     <ul class="list-group">
-                        <a href=""><li class="list-group-item"><img class="icon" src="./images/schedule_icon.png">Schedule<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
-                        <a href=""><li class="list-group-item"><img class="icon" src="./images/todolist_icon.png">To-Do list<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
-                        <a href="contacts.jsp"><li class="list-group-item"><img class="icon" src="./images/contacts_icon.png">Contacts<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
-                        <a href=""><li class="list-group-item"><img class="icon" src="./images/settings_icon.png">Settings<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                        <%
+                        // Si AUCUNE session N'est ouverte...
+                        if (session.getAttribute("user") == null) 
+                        {
+                        %>
+                            <a href="signup.jsp"><li class="list-group-item"><img class="icon" src="./images/signup_icon.png">Sign up<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                            <a href="login.jsp"><li class="list-group-item"><img class="icon" src="./images/login_icon.png">Login<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                        <%
+                        }
+                        // Si une session est ouverte...
+                        else
+                        {
+                        %>  
+                            <a href=""><li class="list-group-item"><img class="icon" src="./images/schedule_icon.png">Schedule<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                            <a href="toDoList.jsp"><li class="list-group-item"><img class="icon" src="./images/todolist_icon.png">To-Do list<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                            <a href="contacts.jsp"><li class="list-group-item"><img class="icon" src="./images/contacts_icon.png">Contacts<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                            <a href="personalInfo.jsp"><li class="list-group-item"><img class="icon" src="./images/personalInfos_icon.png">Settings<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                        <%
+                        }
+                        %>
                     </ul>
                 
             </form>

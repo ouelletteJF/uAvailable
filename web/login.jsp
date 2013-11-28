@@ -1,7 +1,15 @@
 <%-- 
-    Document   : login
-    Created on : 24-Oct-2013, 4:37:44 PM
-    Author     : Steven
+    Fichier:	signin.jsp
+    Contenu:	Page qui affiche le formulaire de connexion
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	24 octobre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -36,11 +44,17 @@
 
     <body>
         <div class="container">
-            <form class="form-signin" id="signinForm" action="index.jsp" method="post">
+            <form class="form-signin" id="signinForm" action="login.do" method="post">
                 
                     <img class="logo" src="./images/logo.png">
                     <br></br>
                     <h4 class="form-signin-heading">Please sign in</h4>
+                    
+                    <%
+                        if ( request.getAttribute("message") != null )
+                            out.println("<p>" + request.getAttribute("message") + "</p>");
+                    %>
+                    
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Email address" autofocus name="inputEmail">
                     </div>
@@ -50,6 +64,7 @@
                     <label class="checkbox">
                         <input type="checkbox" value="remember-me"> Remember me
                     </label>
+                    <input type="hidden" name="action" value="login" />
                     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                 
             </form>

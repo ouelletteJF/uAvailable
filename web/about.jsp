@@ -1,7 +1,15 @@
 <%-- 
-    Document   : about
-    Created on : Nov 3, 2013, 8:12:37 PM
-    Author     : Steven
+    Fichier:	about.jsp
+    Contenu:	Page qui explique en quoi consiste le site
+
+    Auteur:	Steven Lacroix
+    Version:	1.0
+
+    Date de création:	3 novembre 2013
+    Dernière modification:	-
+    Raison mise à jour:	-
+
+    À faire:    -
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

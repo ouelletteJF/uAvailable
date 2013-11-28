@@ -1,13 +1,13 @@
 /*
- *	Fichier:	DAO.java
- *	Contenu:	Interface qui sert de base aux classes du DAO
+ *	Fichier:	Membre.java
+ *	Contenu:	Classe Membre
  *
  *	Auteur:		Jean-François Ouellette
  *	Version:	1.0
  *
  *	Date de création:	13 octobre 2013
- *	Dernière modification:	13 octobre 2013
- *	Raison mise à jour:	-
+ *	Dernière modification:	26 novembre 2013
+ *	Raison mise à jour:	Correction du mappage du courriel et du mot de passe
  *
  *	À faire:    -
  *
@@ -17,42 +17,42 @@ package com.uavailable.entites;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Basic;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlRootElement;
 
-/**
- *
- * @author Steven
- */
 @Entity
 @Table(name = "membre", catalog = "uavailable", schema = "")
+@SecondaryTables({
+    @SecondaryTable(name = "identifiants")
+})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Membre.findAll", query = "SELECT m FROM Membre m"),
-    @NamedQuery(name = "Membre.findByCourriel", query = "SELECT m FROM Membre m WHERE m.identifiants.courriel = :courriel"),
+    @NamedQuery(name = "Membre.findByCourriel", query = "SELECT m FROM Membre m WHERE m.courriel = :courriel"),
     @NamedQuery(name = "Membre.findByNom", query = "SELECT m FROM Membre m WHERE m.nom = :nom"),
     @NamedQuery(name = "Membre.findByPrenom", query = "SELECT m FROM Membre m WHERE m.prenom = :prenom"),
-    @NamedQuery(name = "Membre.findByDateNaissance", query = "SELECT m FROM Membre m WHERE m.dateNaissance = :dateNaissance") })
+    @NamedQuery(name = "Membre.findByDateNaissance", query = "SELECT m FROM Membre m WHERE m.dateNaissance = :dateNaissance") 
+})
 
 public class Membre implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    private Integer id;
+    @Column(table = "identifiants", name="courriel")
+    private String courriel;
     
-    @Embedded
-    private Identifiants identifiants;
+    @Column(table = "identifiants", name="motdepasse")
+    private String motDePasse;
     
     @Column(name = "nom",  length = 30)
     private String nom;
@@ -74,12 +74,28 @@ public class Membre implements Serializable {
     public Membre() { this("", "", "", "", null, ""); }
     public Membre(String courriel, String nom, String prenom, String mdp) { this(courriel, nom, prenom, mdp, null, ""); }
     public Membre(String courriel, String nom, String prenom, String mdp, Date dateNaissance, String tel) {
-        this.identifiants.setCourriel(courriel);
-        this.identifiants.setMotDePasse(mdp);
+        this.courriel = courriel;
+        this.motDePasse = mdp;
         this.nom = nom;
         this.prenom = prenom;
         this.dateNaissance = dateNaissance;
         this.numeroTelephone = tel;
+    }
+    
+    // COURRIEL
+    public void setCourriel(String c) {
+        this.courriel = c;
+    }
+    public String getCourriel() {
+        return this.courriel;
+    }
+    
+    // MOT DE PASSE
+    public void setMotDePasse(String mdp) {
+        this.motDePasse = mdp;
+    }
+    public String getMotDePasse() {
+        return this.motDePasse;
     }
     
     // NOM
@@ -113,10 +129,18 @@ public class Membre implements Serializable {
     public void setNumeroTelephone(String numeroTelephone) {
         this.numeroTelephone = numeroTelephone;
     }
+    
+    // TO-DO LIST
+    public ToDoList getToDoList() {
+        return toDoList;
+    }
+    public void setToDoList(ToDoList tdl) {
+        this.toDoList = tdl;
+    }
 
     @Override
     public String toString() {
-        return "com.uavailable.entites.Membre[ courriel=" + identifiants.getCourriel() + " ]";
+        return "com.uavailable.entites.Membre[ courriel=" + this.courriel + " ]";
     }
     
 /*
