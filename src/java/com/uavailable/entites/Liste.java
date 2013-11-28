@@ -57,15 +57,15 @@ public class Liste implements Serializable {
     private String couleur;
     
     @Column(name = "idMembre")
-    private Integer idMembre;
+    private String idMembre;
     
     @Transient
     private HashMap<Integer, Tache> taches;
 
     // CONSTRUCTEURS
-    public Liste() { this(null, "", "", "", null, null); }
-    public Liste(Integer idL, Integer idM, String nom, String couleur) { this(idL, nom, "", couleur, null, idM); }
-    public Liste(Integer idL, String nom, String description, String couleur, HashMap<Integer, Tache> t, Integer idM) {
+    public Liste() { this(null, "", "", "", null, ""); }
+    public Liste(Integer idL, String idM, String nom, String couleur) { this(idL, nom, "", couleur, null, idM); }
+    public Liste(Integer idL, String nom, String description, String couleur, HashMap<Integer, Tache> t, String idM) {
         this.id = idL;
         this.nom = nom;
         this.description = description;
@@ -115,10 +115,10 @@ public class Liste implements Serializable {
     }
 
     // ID MEMBRE
-    public int getIdToDoList() {
+    public String getIdToDoList() {
         return idMembre;
     }
-    public void setIdToDoList(int idM) {
+    public void setIdToDoList(String idM) {
         this.idMembre = idM;
     }
 
@@ -146,6 +146,5 @@ public class Liste implements Serializable {
     @Override
     public String toString() {
         return "com.uavailable.entites.Liste[ id=" + id + " ]";
-    }
-    
+    }    
 }

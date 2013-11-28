@@ -36,7 +36,7 @@ public class ToDoList {
     }
     
     // Opérations sur les Listes
-    public Boolean creerListe(Integer idL, String nom, String desc, String coul, HashMap<Integer, Tache> t, Integer idM) {
+    public Boolean creerListe(Integer idL, String nom, String desc, String coul, HashMap<Integer, Tache> t, String idM) {
         if( listes.put(idL, new Liste(idL, nom, desc, coul, t, idM)) != null )
             return true;
         

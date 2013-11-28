@@ -42,8 +42,12 @@ public class DeleteTask extends HttpServlet {
         HttpSession session = request.getSession(true);
         Membre m = (Membre) session.getAttribute("user");
         
+        // Tests
+        System.out.println(request.getParameter("idL"));
+        System.out.println(request.getParameter("idT"));
+        
         // Suppression de la tâche au niveau local
-        m.getToDoList().supprimerTache( (Integer) request.getAttribute("idL"), (Integer) request.getAttribute("idT") );
+        m.getToDoList().supprimerTache( Integer.parseInt(request.getParameter("idL")), Integer.parseInt(request.getParameter("idT")) );
         
         // Mise à jour au niveau du serveur
         // Appel du DAO?

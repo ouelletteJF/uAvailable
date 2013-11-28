@@ -37,16 +37,16 @@ public class DeleteList extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        // CODE COPIÉ !!!! RIEN N A ÉTÉ MODIFIÉ
-        
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession session = request.getSession(true);
         Membre m = (Membre) session.getAttribute("user");
         
+        // Tests
+        System.out.println(request.getParameter("idL"));
+        
         // Suppression de la tâche au niveau local
-        m.getToDoList().supprimerTache( (Integer) request.getAttribute("idL"), (Integer) request.getAttribute("idT") );
+        m.getToDoList().supprimerListe( Integer.parseInt(request.getParameter("idL")) );
         
         // Mise à jour au niveau du serveur
         // Appel du DAO?
