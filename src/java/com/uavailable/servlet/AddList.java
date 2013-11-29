@@ -14,9 +14,18 @@
 */
 package com.uavailable.servlet;
 
+import com.uavailable.entites.Liste;
 import com.uavailable.entites.Membre;
+import com.uavailable.entites.Tache;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -37,19 +46,37 @@ public class AddList extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        // CODE COPIÉ !!!! RIEN N A ÉTÉ MODIFIÉ
-        
         response.setContentType("text/html;charset=UTF-8");
-
         HttpSession session = request.getSession(true);
         Membre m = (Membre) session.getAttribute("user");
         
+        String  name = request.getParameter("inputName"),
+                desc = request.getParameter("inputDescription"),
+                color = request.getParameter("inputPriority"),
+                idM = m.getCourriel();
+        
         // Ajout de la tâche au niveau local
-        //m.getToDoList().creerTache(Integer id, boolean complete, Date dateButoire, String desc, String nom, String prio, String rappel, Integer idListe);
+        Liste l = new Liste(null, idM, name, desc, color);
+        m.getToDoList().creerListe(l);
         
         // Mise à jour au niveau du serveur
-        // Appel du DAO?
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        
+        try 
+        {
+            tr.begin();
+            em.persist(l);
+            tr.commit();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            em.close();
+            emf.close();
+        }
         
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
         r.forward(request, response);

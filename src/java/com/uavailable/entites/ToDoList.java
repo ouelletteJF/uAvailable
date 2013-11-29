@@ -36,8 +36,8 @@ public class ToDoList {
     }
     
     // Opérations sur les Listes
-    public Boolean creerListe(Integer idL, String nom, String desc, String coul, HashMap<Integer, Tache> t, String idM) {
-        if( listes.put(idL, new Liste(idL, nom, desc, coul, t, idM)) != null )
+    public Boolean creerListe(Liste l) {
+        if( listes.put(l.getId(), l) != null )
             return true;
         
         return false;
@@ -58,9 +58,9 @@ public class ToDoList {
     }
     
     // Opérations sur les Taches
-    public Boolean creerTache(Integer id, boolean complete, Date dateButoire, String desc, String nom, String prio, String rappel, Integer idListe) {
+    public Boolean creerTache(Tache t) {
             
-        if( listes.get(idListe).getTaches().put( id, new Tache(id, complete, dateButoire, desc, nom, prio, rappel, idListe) ) != null )
+        if( listes.get( t.getIdListe() ).getTaches().put( t.getId(), t ) != null )
             return true;
         
         return false;
@@ -76,8 +76,10 @@ public class ToDoList {
     }
     public Boolean modifierTache(Tache t) {
         
-        if( listes.get( t.getIdListe() ).getTaches().put( t.getId(), t ) != null )
+        if( listes.get( t.getIdListe() ).getTaches().containsKey( t.getId() )  ) {
+            listes.get( t.getIdListe() ).getTaches().put( t.getId(), t );
             return true;
+        }
         
         return false;
     }

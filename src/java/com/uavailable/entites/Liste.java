@@ -21,6 +21,8 @@ import java.util.LinkedList;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -44,6 +46,7 @@ public class Liste implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private Integer id;
     
@@ -64,7 +67,7 @@ public class Liste implements Serializable {
 
     // CONSTRUCTEURS
     public Liste() { this(null, "", "", "", null, ""); }
-    public Liste(Integer idL, String idM, String nom, String couleur) { this(idL, nom, "", couleur, null, idM); }
+    public Liste(Integer idL, String idM, String nom, String desc, String couleur) { this(idL, nom, desc, couleur, null, idM); }
     public Liste(Integer idL, String nom, String description, String couleur, HashMap<Integer, Tache> t, String idM) {
         this.id = idL;
         this.nom = nom;

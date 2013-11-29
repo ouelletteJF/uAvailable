@@ -33,7 +33,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Entity
 @Table(name = "membre", catalog = "uavailable", schema = "")
 @SecondaryTables({
-    @SecondaryTable(name = "identifiants")
+    @SecondaryTable(name = "profiles")
 })
 @XmlRootElement
 @NamedQueries({
@@ -48,23 +48,23 @@ public class Membre implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @Id
-    @Column(table = "identifiants", name="courriel")
+    @Column(name="courriel")
     private String courriel;
     
-    @Column(table = "identifiants", name="motdepasse")
+    @Column(name="motdepasse")
     private String motDePasse;
     
-    @Column(name = "nom",  length = 30)
+    @Column(table = "profiles", name = "nom",  length = 30)
     private String nom;
     
-    @Column(name = "prenom", length = 30)
+    @Column(table = "profiles", name = "prenom", length = 30)
     private String prenom;
     
-    @Column(name = "dateNaissance")
+    @Column(table = "profiles", name = "dateNaissance")
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
     
-    @Column(name = "numeroTelephone", length = 10)
+    @Column(table = "profiles", name = "numeroTelephone", length = 10)
     private String numeroTelephone;
     
     @Transient

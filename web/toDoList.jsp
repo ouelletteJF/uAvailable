@@ -38,17 +38,28 @@
                             ToDoList maToDoList = new ToDoList( new HashMap<Integer, Liste>() );
 
                             // Création de listes
-                            maToDoList.creerListe(0, "Unclassified", "Liste par défaut", "Red", new HashMap<Integer, Tache>(), "jf@me.com");
-                            maToDoList.creerListe(1, "Liste 1", "Un 2e essai de liste", "Blue", new HashMap<Integer, Tache>(), "jf@me.com");
-                            maToDoList.creerListe(2, "Liste 2", "Un 3e essai de liste", "Green", new HashMap<Integer, Tache>(), "jf@me.com");
-                            maToDoList.creerListe(3, "Liste 3", "Un 4e essai de liste", "Purple", new HashMap<Integer, Tache>(), "jf@me.com");
+                            Liste   l1 = new Liste(0, "Unclassified", "Liste par défaut", "Red", new HashMap<Integer, Tache>(), "jf@me.com"),
+                                    l2 = new Liste(1, "Liste 1", "Un 2e essai de liste", "Blue", new HashMap<Integer, Tache>(), "jf@me.com"),
+                                    l3 = new Liste(2, "Liste 2", "Un 3e essai de liste", "Green", new HashMap<Integer, Tache>(), "jf@me.com"),
+                                    l4 = new Liste(3, "Liste 3", "Un 4e essai de liste", "Purple", new HashMap<Integer, Tache>(), "jf@me.com");
+                            
+                            maToDoList.creerListe(l1);
+                            maToDoList.creerListe(l2);
+                            maToDoList.creerListe(l3);
+                            maToDoList.creerListe(l4);
 
                             // Création de taches
-                            maToDoList.creerTache( 50, false, new Date(), "Un 1er essai de tache", "Tache 0", "URGENT", "Aucun", 0 );
-                            maToDoList.creerTache( 1, false, new Date(), "Un 2e essai de tache", "Tache 1", "Faible", "Aucun", 1 );
-                            maToDoList.creerTache( 2, true, new Date(), "Un 3e essai de tache", "Tache 2", "Modérée", "Aucun", 1 );
-                            maToDoList.creerTache( 3, false, new Date(), "Un 4e essai de tache", "Tache 3", "Faible", "Aucun", 1 );
-                            maToDoList.creerTache( 4, true, new Date(), "Un 5e essai de tache", "Tache 4", "URGENT", "Aucun", 3 );
+                            Tache   t1 = new Tache(50, false, new Date(), "Un 1er essai de tache", "Tache 0", "URGENT", "Aucun", 0),
+                                    t2 = new Tache(1, false, new Date(), "Un 2e essai de tache", "Tache 1", "Faible", "Aucun", 1),
+                                    t3 = new Tache(2, true, new Date(), "Un 3e essai de tache", "Tache 2", "Modérée", "Aucun", 1),
+                                    t4 = new Tache(3, false, new Date(), "Un 4e essai de tache", "Tache 3", "Faible", "Aucun", 1),
+                                    t5 = new Tache(4, true, new Date(), "Un 5e essai de tache", "Tache 4", "URGENT", "Aucun", 3);
+                            
+                            maToDoList.creerTache(t1);
+                            maToDoList.creerTache(t2);
+                            maToDoList.creerTache(t3);
+                            maToDoList.creerTache(t4);
+                            maToDoList.creerTache(t5);
 
                             HashMap<Integer, Liste> tempListes = maToDoList.getListes();
                             
@@ -85,9 +96,11 @@
                         out.println("<td>" + ((Tache)listes[0].getTaches().values().toArray()[i]).getNom() + "</td>");
                         out.println("<td>" + ((Tache)listes[0].getTaches().values().toArray()[i]).getDateButoire() + "</td>");
                         out.println("<td> <a href='deleteTask.do?action=deleteTask&&idL=" + listes[0].getId() + "&&idT=" + ((Tache)listes[0].getTaches().values().toArray()[i]).getId() + "'> <img src='./images/eraseSymbol.jpg' /> </a> </td>");
-                        out.println("<td> <a href='createTask.jsp?action=edit&&task=" + ((Tache)listes[0].getTaches().values().toArray()[i]) + "'> <img src='./images/editSymbol.jpg' /> </a> </td>");
+                        out.println("<td> <a href='createTask.jsp?action=edit&&list=" + listes[0].getId() + "&&task=" + ((Tache)listes[0].getTaches().values().toArray()[i]).getId() + "'> <img src='./images/editSymbol.jpg' /> </a> </td>");
                         out.println("</tr>");
                     }
+                    
+                    out.println("<a href='createTask.jsp?action=create&&list=" + listes[0].getId() + "'>New task</a>");
                 }
                 
                 // Affichage des listes et de leurs tâches
@@ -95,6 +108,8 @@
                 
                 if (listes.length > 1) {
                     String tempId = "";
+                    
+                    // Affichage des listes
                     for (int i = 1; i < listes.length; i++) { 
                         out.println("<h2>" + listes[i].getNom() + "</h2>");
           %>
@@ -116,18 +131,19 @@
                         </ul>
             <% 
                         tempId = "liste" + String.valueOf(i);
-
+                        
+                        // Affichage des tâches
                         if (listes[i].getTaches().size() == 0)
                             out.println("<h4>You've got nothing to take care of regarding " + listes[i].getNom() + ". What a luck!</h4>");
                         else {
                             out.println("<table id='" + tempId + "'>");
-
+                            
                             for (int j = 0; j < listes[i].getTaches().size(); j++) {
                                 out.println("<tr>");
                                 out.println("<td>" + ((Tache)listes[i].getTaches().values().toArray()[j]).getNom() + "</td>");
                                 out.println("<td>" + ((Tache)listes[i].getTaches().values().toArray()[j]).getDateButoire() + "</td>");
                                 out.println("<td> <a href='deleteTask.do?action=deleteTask&&idL=" + listes[i].getId() + "&&idT=" + ((Tache)listes[i].getTaches().values().toArray()[j]).getId() + "'> <img src='./images/eraseSymbol.jpg' /> </a> </td>");
-                                out.println("<td> <a href='createTask.jsp?action=edit&&task=" + ((Tache)listes[i].getTaches().values().toArray()[j]) + "'> <img src='./images/editSymbol.jpg' /> </a> </td>");
+                                out.println("<td> <a href='createTask.jsp?action=edit&&list=" + listes[i].getId() + "&&task=" + ((Tache)listes[i].getTaches().values().toArray()[j]).getId() + "'> <img src='./images/editSymbol.jpg' /> </a> </td>");
                                 out.println("</tr>");
                             }
 
@@ -138,7 +154,7 @@
                     }
                 }
           %>
-                <a href="createList.jsp?action=create">New list</a>
+                <br /><br /><a href="createList.jsp?action=create">New list</a>
         </div>
     </body>
 </html>

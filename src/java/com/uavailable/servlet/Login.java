@@ -62,12 +62,12 @@ public class Login extends HttpServlet {
         }
 
         // ?
-        try {
-            Class.forName(this.getServletContext().getInitParameter("piloteJdbc"));
-        } 
-        catch (ClassNotFoundException ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+//            Class.forName(this.getServletContext().getInitParameter("piloteJdbc"));
+//        } 
+//        catch (ClassNotFoundException ex) {
+//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+//        }
                 
         // Préparation de la récupération des données dans la BD
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");

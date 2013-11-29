@@ -17,7 +17,13 @@ package com.uavailable.servlet;
 import com.uavailable.entites.Membre;
 import com.uavailable.entites.Tache;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,15 +45,47 @@ public class AddTask extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
         HttpSession session = request.getSession(true);
         Membre m = (Membre) session.getAttribute("user");
         
+        String  name = request.getParameter("inputName"),
+                desc = request.getParameter("inputDescription"),
+                priority = request.getParameter("inputPriority"),
+                alert = request.getParameter("inputAlert");
+        
+        Integer idList = Integer.parseInt(request.getParameter("inputList"));
+        
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm:ss");
+        Date d = null;
+        try {
+            d = sdf.parse( request.getParameter("inputDueDate") );
+        } 
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
         // Ajout de la tâche au niveau local
-        //m.getToDoList().creerTache(Integer id, boolean complete, Date dateButoire, String desc, String nom, String prio, String rappel, Integer idListe);
+        Tache t = new Tache(null, false, d, desc, name, priority, alert, idList);
+        m.getToDoList().creerTache(t);
         
         // Mise à jour au niveau du serveur
-        // Appel du DAO?
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        
+        try 
+        {
+            tr.begin();
+            em.persist(t);
+            tr.commit();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            em.close();
+            emf.close();
+        }
         
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
         r.forward(request, response);

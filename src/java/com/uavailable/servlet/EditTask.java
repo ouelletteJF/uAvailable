@@ -9,7 +9,8 @@
  *	Dernière modification:	-
  *	Raison mise à jour:	-
  *
- *	À faire:    -
+ *	À faire:    Implémenter la mise à jour
+                    Implémenter le transfert de la valeur de Completed
  *
 */
 package com.uavailable.servlet;
@@ -18,6 +19,13 @@ import com.uavailable.entites.Membre;
 import com.uavailable.entites.Tache;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -39,14 +47,47 @@ public class EditTask extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm:ss");
         HttpSession session = request.getSession(true);
         Membre m = (Membre) session.getAttribute("user");
         
+        String  name = request.getParameter("inputName"),
+                desc = request.getParameter("inputDescription"),
+                priority = request.getParameter("inputPriority"),
+                alert = request.getParameter("inputAlert");
+        Integer idTask = Integer.parseInt(request.getParameter("task")),
+                idList = Integer.parseInt(request.getParameter("inputList"));
+        //Boolean isCompleted = request.getParameter("inputCompleted");
+        Date d = null;
+        try {
+            d = sdf.parse( request.getParameter("inputDueDate") );
+        } 
+        catch (ParseException e) {
+            e.printStackTrace();
+        }
+        
         // Modification de la tâche au niveau local
-        m.getToDoList().modifierTache( (Tache) request.getAttribute("tache") );
+        Tache t = new Tache(idTask, false /*isCompleted*/, d, desc, name, priority, alert, idList);
+        m.getToDoList().modifierTache(t);
         
         // Mise à jour au niveau du serveur
-        // Appel du DAO?
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction tr = em.getTransaction();
+        
+        try 
+        {
+            tr.begin();
+            em.persist(t);
+            tr.commit();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        finally {
+            em.close();
+            emf.close();
+        }
         
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
         r.forward(request, response);
