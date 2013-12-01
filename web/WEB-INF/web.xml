@@ -116,6 +116,46 @@
         <url-pattern>/editTask</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet SearchContact -->
+    <servlet>
+        <servlet-name>searchContact</servlet-name>
+        <servlet-class>com.uavailable.servlet.SearchContact</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchContact</servlet-name>
+        <url-pattern>/searchContact</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet SendContactRequest -->
+    <servlet>
+        <servlet-name>sendContactReq</servlet-name>
+        <servlet-class>com.uavailable.servlet.SendContactRequest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>sendContactReq</servlet-name>
+        <url-pattern>/sendContactReq</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet AcceptContactRequest -->
+    <servlet>
+        <servlet-name>acceptContactReq</servlet-name>
+        <servlet-class>com.uavailable.servlet.AcceptContactRequest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>acceptContactReq</servlet-name>
+        <url-pattern>/acceptContactReq</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Servlet DeleteContact -->
+    <servlet>
+        <servlet-name>deleteContact</servlet-name>
+        <servlet-class>com.uavailable.servlet.DeleteContact</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deleteContact</servlet-name>
+        <url-pattern>/deleteContact</url-pattern>
+    </servlet-mapping>
+    
     
     <session-config>
         <session-timeout>

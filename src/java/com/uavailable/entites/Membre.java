@@ -41,6 +41,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Membre.findByCourriel", query = "SELECT m FROM Membre m WHERE m.courriel = :courriel"),
     @NamedQuery(name = "Membre.findByNom", query = "SELECT m FROM Membre m WHERE m.nom = :nom"),
     @NamedQuery(name = "Membre.findByPrenom", query = "SELECT m FROM Membre m WHERE m.prenom = :prenom"),
+    @NamedQuery(name = "Membre.findByTel", query = "SELECT m FROM Membre m WHERE m.numeroTelephone = :tel"),
     @NamedQuery(name = "Membre.findByDateNaissance", query = "SELECT m FROM Membre m WHERE m.dateNaissance = :dateNaissance") 
 })
 
@@ -66,6 +67,9 @@ public class Membre implements Serializable {
     
     @Column(table = "profiles", name = "numeroTelephone", length = 10)
     private String numeroTelephone;
+    
+    @Transient
+    private ListeDeContacts contacts;
     
     @Transient
     private ToDoList toDoList;
@@ -128,6 +132,14 @@ public class Membre implements Serializable {
     }
     public void setNumeroTelephone(String numeroTelephone) {
         this.numeroTelephone = numeroTelephone;
+    }
+    
+    // CONTACTS
+    public ListeDeContacts getContacts() {
+        return contacts;
+    }
+    public void setContacts(ListeDeContacts c) {
+        this.contacts = c;
     }
     
     // TO-DO LIST

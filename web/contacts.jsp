@@ -9,7 +9,7 @@
     Dernière modification:	-
     Raison mise à jour:	-
 
-    À faire:    -
+    À faire:    Icône de paramètres de partage pour chaque contact pour voir rapidement ce qui lui est partagé
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -70,8 +70,8 @@
 	<div data-role="footer" data-position="fixed">
             <div data-role="navbar">
                 <ul>
-                    <li><a href="#">Edit</a></li>
-                    <li><a href="#">Add</a></li>
+                    <li><a href="contactRequests.jsp">Requests (0)</a></li>
+                    <li><a href="addContact.jsp">Add</a></li>
                     <li><a href="#">Groups</a></li>
                 </ul>
             </div>

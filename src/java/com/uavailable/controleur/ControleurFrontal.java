@@ -98,8 +98,31 @@ public class ControleurFrontal extends HttpServlet {
                 r = this.getServletContext().getRequestDispatcher("/editTask"); 
                 r.forward(request, response);     
                 return;
-            }            
-            
+            }  
+            else if ("searchContact".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/searchContact"); 
+                r.forward(request, response);     
+                return;
+            }
+            else if ("sendContactReq".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/sendContactReq"); 
+                r.forward(request, response);     
+                return;
+            }
+            else if ("acceptContactReq".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/acceptContactReq"); 
+                r.forward(request, response);     
+                return;
+            }
+            else if ("deleteContact".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/deleteContact"); 
+                r.forward(request, response);     
+                return;
+            }
         }
     
  }

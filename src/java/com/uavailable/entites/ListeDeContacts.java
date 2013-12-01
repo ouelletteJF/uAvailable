@@ -6,8 +6,8 @@
  *	Version:	1.0
  *
  *	Date de création:	14 novembre 2013
- *	Dernière modification:	-
- *	Raison mise à jour:	-
+ *	Dernière modification:	1er décembre 2013
+ *	Raison mise à jour:	Ajout des méthodes «ajouter» et «supprimer»
  *
  *	À faire:    -
  *
@@ -35,12 +35,18 @@ public class ListeDeContacts {
         return this.contacts;
     }
     
-    /*
+    
     public Boolean ajouterContact(Membre m) {
-        this.contacts.put(, m)
+        if ( this.contacts.put(m.getCourriel(), m) != null )
+            return true;
+        
+        return false;
     }
     
-    public Boolean supprimerContact() {
+    public Boolean supprimerContact(String idM) {
+        if ( this.contacts.remove(idM) != null )
+            return true;
         
-    }*/
+        return false;
+    }
 }
