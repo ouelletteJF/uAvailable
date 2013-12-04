@@ -31,8 +31,10 @@
             
             <% 
                 Membre m = (Membre) session.getAttribute("user");
-                //HashMap<Integer, Liste> tempListes = m.getToDoList().getListes();
+                HashMap<Integer, Liste> tempListes = m.getToDoList().getListes();
                 
+                
+                /*
                             // SIMULATION D'UNE TO-DO LIST D'UN MEMBRE - DÉBUT DU BLOC À SUPPRIMER
                             // Création de la To-Do List
                             ToDoList maToDoList = new ToDoList( new HashMap<Integer, Liste>() );
@@ -67,7 +69,7 @@
                             session.setAttribute("user", m);
                             out.println( ((Liste)((Membre)session.getAttribute("user")).getToDoList().getListes().values().toArray()[0]).getNom() + " OK MAN???" );
                             // FIN DU BLOC DE CODE À SUPPRIMER
-                
+                */
                 // Récupération des listes sous forme de tableau
                 Object l[] = tempListes.values().toArray();
                 Liste listes[] = new Liste[l.length];
