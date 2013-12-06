@@ -31,4 +31,9 @@ public class EntityManagerSingleton {
     public static EntityManager getInstance(){
         return EMSingletonHolder.em;
     }
+    
+    public static void close(){
+        EMSingletonHolder.em.close();
+        EMSingletonHolder.emf.close();
+    }
 }

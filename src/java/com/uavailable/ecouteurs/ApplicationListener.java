@@ -15,6 +15,7 @@
 
 package com.uavailable.ecouteurs;
 
+import com.uavailable.util.EntityManagerSingleton;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -28,6 +29,7 @@ public class ApplicationListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
+        EntityManagerSingleton.close();
         System.out.println("Fermeture application");
     }
     
