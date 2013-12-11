@@ -54,7 +54,7 @@
                 </div>               
             
             <a href="#">Import contacts</a>
-        </div> <!-- /container -->
+        </div> 
         
         <div id="searchResults">
         </div>

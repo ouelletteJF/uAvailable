@@ -1,32 +1,26 @@
 /*
- *	Fichier:	EditTask.java
- *	Contenu:	Servlet qui assure la modification d'une tâche dans la To-Do List
+ *	Fichier:	DeclineContactRequest.java
+ *	Contenu:	Servlet qui effectue les traitements relatifs au refus d'une demande d'ajout aux contacts.
  *
  *	Auteur:		Jean-François Ouellette
  *	Version:	1.0
  *
- *	Date de création:	25 novembre 2013
+ *	Date de création:	10 décembre 2013
  *	Dernière modification:	-
  *	Raison mise à jour:	-
  *
- *	À faire:    Implémenter la mise à jour
-                    Implémenter le transfert de la valeur de Completed
+ *	À faire:    -
  *
 */
 package com.uavailable.servlet;
 
-import com.uavailable.entites.Membre;
-import com.uavailable.entites.Tache;
+import com.uavailable.entites.ContactRequest;
 import com.uavailable.util.EntityManagerSingleton;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class EditTask extends HttpServlet {
+public class DeclineContactRequest extends HttpServlet {
 
     /**
      * Processes requests for both HTTP
@@ -48,40 +42,23 @@ public class EditTask extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yy hh:mm:ss");
         HttpSession session = request.getSession(true);
-        Membre m = (Membre) session.getAttribute("user");
         
-        String  name = request.getParameter("inputName"),
-                desc = request.getParameter("inputDescription"),
-                priority = request.getParameter("inputPriority"),
-                alert = request.getParameter("inputAlert");
-        Integer idTask = Integer.parseInt(request.getParameter("task")),
-                idList = Integer.parseInt(request.getParameter("inputList"));
-        //Boolean isCompleted = request.getParameter("inputCompleted");
-        Date d = null;
-        try {
-            d = sdf.parse( request.getParameter("inputDueDate") );
-        } 
-        catch (ParseException e) {
-            e.printStackTrace();
-        }
+        Integer id = Integer.parseInt(request.getParameter("id"));
+                
+        EntityManager em = EntityManagerSingleton.getInstance(); 
+        Query   qFindRequest = em.createNamedQuery("ContactRequest.findById");
+        qFindRequest.setParameter("id", id);
+        EntityTransaction t = em.getTransaction();
         
-        // Modification de la tâche au niveau local
-        Tache t = new Tache(idTask, false /*isCompleted*/, d, desc, name, priority, alert, idList);
-        m.getToDoList().modifierTache(t);
+        t.begin();
         
-        // Mise à jour au niveau du serveur
-        EntityManager em = EntityManagerSingleton.getInstance();
-        EntityTransaction tr = em.getTransaction();
+        ContactRequest cr = (ContactRequest) qFindRequest.getSingleResult();
+        em.remove(cr);
         
-        tr.begin();
+        t.commit();
         
-        em.persist(t);
-        
-        tr.commit();
-        
-        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/contactRequests.jsp");
         r.forward(request, response);
     }
 

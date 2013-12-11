@@ -16,6 +16,7 @@ package com.uavailable.servlet;
 
 import com.uavailable.entites.Membre;
 import com.uavailable.entites.Tache;
+import com.uavailable.util.EntityManagerSingleton;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -69,24 +70,15 @@ public class AddTask extends HttpServlet {
         m.getToDoList().creerTache(t);
         
         // Mise à jour au niveau du serveur
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerSingleton.getInstance();
         EntityTransaction tr = em.getTransaction();
         
-        try 
-        {
-            tr.begin();
-            em.persist(t);
-            tr.commit();
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-        finally {
-            em.close();
-            emf.close();
-        }
+        tr.begin();
         
+        em.persist(t);
+        
+        tr.commit();
+
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/toDoList.jsp");
         r.forward(request, response);
     }

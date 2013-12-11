@@ -35,7 +35,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "GroupeDeContacts.findAll", query = "SELECT g FROM GroupeDeContacts g"),
     @NamedQuery(name = "GroupeDeContacts.findByNomGroupe", query = "SELECT g FROM GroupeDeContacts g WHERE g.nomGroupe = :nomGroupe"),
-    })
+})
 public class GroupeDeContacts implements Serializable {
     private static final long serialVersionUID = 1L;
     

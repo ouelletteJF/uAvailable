@@ -57,6 +57,12 @@ public class ControleurFrontal extends HttpServlet {
                 r.forward(request, response);     
                 return;
             }
+            else if ("logout".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/logout"); 
+                r.forward(request, response);     
+                return;
+            }
             else if ("personalInfo".equals(action))
             {   
                 r = this.getServletContext().getRequestDispatcher("/editInfos"); 
@@ -114,6 +120,12 @@ public class ControleurFrontal extends HttpServlet {
             else if ("acceptContactReq".equals(action))
             {   
                 r = this.getServletContext().getRequestDispatcher("/acceptContactReq"); 
+                r.forward(request, response);     
+                return;
+            }
+            else if ("declineContactReq".equals(action))
+            {   
+                r = this.getServletContext().getRequestDispatcher("/declineContactReq"); 
                 r.forward(request, response);     
                 return;
             }

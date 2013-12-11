@@ -12,6 +12,14 @@
     À faire:    Icône de paramètres de partage pour chaque contact pour voir rapidement ce qui lui est partagé
 --%>
 
+<%@page import="java.util.LinkedList"%>
+<%@page import="com.uavailable.entites.Contact"%>
+<%@page import="java.util.ListIterator"%>
+<%@page import="java.util.List"%>
+<%@page import="javax.persistence.Query"%>
+<%@page import="com.uavailable.util.EntityManagerSingleton"%>
+<%@page import="javax.persistence.EntityManager"%>
+<%@page import="com.uavailable.entites.Membre"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,21 +49,6 @@
             <script src="../../assets/js/html5shiv.js"></script>
             <script src="../../assets/js/respond.min.js"></script>
         <![endif]-->
-        <script>
-            $( document ).ready( function() {
-
-                    names = ["Hannah Gilbert","JaMarcus Davidson","Sofia Wesley","Mark Smith","Genesis Hailey","Amelia Webster","Leah Hodges","Jocelyn Higgins","Madelyn Galbraith","Gabrielle Wayne","Elizabeth Cook","Zoe Calhoun","Natalie Sheldon","Maya Geraldo","Isabelle Morrison","Maria Turner","Lauren Hoggarth","Madelyn Osborne","Vanessa Nash","Khloe Mercer","Rachel Garblinski","Steven Goldman","Hailey Carrington","Judith Brickman","Julia Oliver","Jasmine Abramson","Brooke Creighton","Sophie Wainwright","Gabriella Walkman","Archibald Carrington","Isabella Haig","Peter Carrington","Gabrielle Crofton","Makayla Chandter","Miles Turner","Isabelle Wainwright","Andrew WifKinson","Brenda Brown","Scotty Nash","Ariana Clapton","Peyton Fulton","Victoria Brown","Molly Daniels","Cynthia Monroe","Payton Thomson","Payton Wainwright","Kylie Webster","Harry Chiglitz","Lawrence Gilson","Olivia Cook","Henry Miller","Natalie Smith","Zoey Wainwright","Charlotte Gardner","Ira Wallace","Samantha Brickman","Hannah Galbraith","Kayla Davidson","Nevaeh Osborne","Gabrielle Chesterton","Katherine Hamphrey","Jerry Michaelson","Victoria Gibbs","Barry Goodman","Vincent Wilthorpe","Barney Mercer","Camilla Kapinksy","Jessica Cook","Kaitlyn Vaughan","Evelyn Nash","Trinity Neal","Melanie Oswald","Sophia Goldman","Kimberly Nathan","Ashley Carter","Elizabeth Abramson","Vinny Amarillo","Layla Gardner","Irma Nathan","Leah Galbraith","Katherine Miln","Caroline Miller","Ernie Carter","Winston Smith","Fyodor Dostoevsky","Neville James","Lucrecious Carter","Zebediah Jones"];
-                    names.sort();
-
-                    var namesListHTML = '';
-                    $.each( names, function( i ) {
-                            namesListHTML += '<li class="list-group-item" data-icon="false"><a href="aContact.jsp">' + names[i] + '</a></li>';
-                    });
-                    $( '#mylistview' ).append( namesListHTML );
-                    $( '#mylistview' ).listview( 'refresh' ).alphascroll();
-
-            });
-        </script>
     </head>
 
     <body>
@@ -65,7 +58,64 @@
 		<h1>Contacts</h1>
 	</div>
 	<div data-role="content">
-		<ul id="mylistview" data-role="listview" data-autodividers="true"></ul>
+            <%
+                Membre user = (Membre) session.getAttribute("user");
+
+                Contact tempContact = null;
+                Membre tempMembre = null;
+                List<Membre> allContacts = new LinkedList();
+
+                EntityManager em = EntityManagerSingleton.getInstance();
+
+                // Récupère tous les contacts où l'id du membre apparait
+                Query   qFindAllContact1 = em.createNamedQuery("Contact.findByIdMembre");
+                qFindAllContact1.setParameter("idMembre", user.getCourriel());
+                Query   qFindAllContact2 = em.createNamedQuery("Contact.findByIdContact");
+                qFindAllContact2.setParameter("idContact", user.getCourriel());
+
+                List<Contact> resultats = qFindAllContact1.getResultList();
+                ListIterator<Contact> i = resultats.listIterator();
+
+                while(i.hasNext())
+                {
+                    tempContact = i.next();
+                    
+                    tempMembre = new Membre();
+                    tempMembre.setCourriel( tempContact.getContactId().getIdContact());
+                    tempMembre.setNom( tempContact.getNomContact() );
+                    tempMembre.setPrenom( tempContact.getPrenomContact() );
+                    allContacts.add(tempMembre);
+                }
+                
+                resultats = qFindAllContact2.getResultList();
+                i = resultats.listIterator();
+
+                while(i.hasNext())
+                {
+                    tempContact = i.next();
+                    
+                    tempMembre = new Membre();
+                    tempMembre.setCourriel( tempContact.getContactId().getIdMembre());
+                    tempMembre.setNom( tempContact.getNomMembre() );
+                    tempMembre.setPrenom( tempContact.getPrenomMembre() );
+                    allContacts.add(tempMembre);
+                }
+                
+                ListIterator<Membre> j = allContacts.listIterator();
+            %>
+                <ul id="mylistview" data-role="listview" data-autodividers="true">
+            <%
+                while(j.hasNext())
+                {
+                    tempMembre = j.next();
+                    
+            %>
+                    <li class="list-group-item" data-icon="false"><a href="aContact.jsp?id=<%= tempMembre.getCourriel() %>"><%= tempMembre.getPrenom() + " " + tempMembre.getNom() %></a></li>
+            <%
+                }
+            %>
+            
+                </ul>
 	</div>
 	<div data-role="footer" data-position="fixed">
             <div data-role="navbar">

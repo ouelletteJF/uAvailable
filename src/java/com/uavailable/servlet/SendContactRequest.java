@@ -14,18 +14,25 @@
 */
 package com.uavailable.servlet;
 
+import com.uavailable.entites.ContactRequest;
+import com.uavailable.entites.Membre;
+import com.uavailable.util.EntityManagerSingleton;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-/**
- *
- * @author JF
- */
+
 public class SendContactRequest extends HttpServlet {
 
     /**
@@ -40,21 +47,26 @@ public class SendContactRequest extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet SendContactRequest</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet SendContactRequest at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
-            out.close();
-        }
+        HttpSession session = request.getSession(true);
+        
+        String  msg = request.getParameter("message"),
+                idM = ((Membre) session.getAttribute("user")).getCourriel(),
+                idC = request.getParameter("id");       
+       
+        EntityManager em = EntityManagerSingleton.getInstance(); 
+        
+        ContactRequest cr = new ContactRequest( null, new Date(), "", idM, idC );
+        System.out.println("ContactRequest : " + cr);
+        
+        EntityTransaction t = em.getTransaction();
+        t.begin();
+        
+        em.persist(cr);
+        
+        t.commit();
+        
+        RequestDispatcher r = this.getServletContext().getRequestDispatcher("/index.jsp?action=gestCompteBenevole&&&&op=show");
+        r.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

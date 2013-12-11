@@ -67,6 +67,7 @@
                             <a href="toDoList.jsp"><li class="list-group-item"><img class="icon" src="./images/todolist_icon.png">To-Do list<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
                             <a href="contacts.jsp"><li class="list-group-item"><img class="icon" src="./images/contacts_icon.png">Contacts<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
                             <a href="personalInfo.jsp"><li class="list-group-item"><img class="icon" src="./images/personalInfos_icon.png">Settings<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
+                            <a href="logout.do?action=logout"><li class="list-group-item"><img class="icon" src="./images/personalInfos_icon.png">Log out<img class="arrow_icon" src="./images/arrow_icon.png"></li></a>
                         <%
                         }
                         %>

@@ -8,6 +8,8 @@
     <class>com.uavailable.entites.Tache</class>
     <class>com.uavailable.entites.BlocDisponibilite</class>
     <class>com.uavailable.entites.GroupeDeContacts</class>
+    <class>com.uavailable.entites.ContactRequest</class>
+    <class>com.uavailable.entites.Contact</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/uavailable?zeroDateTimeBehavior=convertToNull"/>

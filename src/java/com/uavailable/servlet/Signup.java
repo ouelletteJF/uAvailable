@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.uavailable.entites.Membre;
+import com.uavailable.util.EntityManagerSingleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -44,20 +45,17 @@ public class Signup extends HttpServlet {
                 courriel = request.getParameter("inputEmail"),
                 password = request.getParameter("inputPassword");
        
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = EntityManagerSingleton.getInstance();
+        EntityTransaction t = em.getTransaction();
         
         Membre membre = new Membre(courriel, nom, prenom, password);
         System.out.println("Membre : " + membre);
-        
-        EntityTransaction t = em.getTransaction();
+
         t.begin();
         
         em.persist(membre);
-        t.commit();
         
-        em.close();
-        emf.close();
+        t.commit();
         
         RequestDispatcher r = this.getServletContext().getRequestDispatcher("/login.jsp");
         r.forward(request, response);

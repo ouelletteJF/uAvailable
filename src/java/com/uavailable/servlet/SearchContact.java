@@ -15,6 +15,7 @@
 package com.uavailable.servlet;
 
 import com.uavailable.entites.Membre;
+import com.uavailable.util.EntityManagerSingleton;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -50,9 +51,7 @@ public class SearchContact extends HttpServlet {
         System.out.println(name);
         
         // Connexion à la BD
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        EntityManager em = EntityManagerSingleton.getInstance();
         
         // Définition des requêtes
         Query qFindByEmail = em.createNamedQuery("Membre.findByCourriel");
@@ -67,7 +66,6 @@ public class SearchContact extends HttpServlet {
         Query qFindByTel = em.createNamedQuery("Membre.findByTel");
         qFindByTel.setParameter("tel", name);
         
-        tx.begin();
         
         List<Membre> rEmail = qFindByEmail.getResultList();
         List<Membre> rTel = qFindByTel.getResultList(); 
@@ -103,9 +101,6 @@ public class SearchContact extends HttpServlet {
                     resultat += "{ \"prenom\" : \"" + rFirstName.get(i).getPrenom() + "\", \"nom\" : \"" + rFirstName.get(i).getNom() + "\", \"courriel\" : \"" + rFirstName.get(i).getCourriel() + "\", \"tel\" : \"" + rFirstName.get(i).getNumeroTelephone() + "\" }, ";
                     rAll.add( rFirstName.get(i) );
                 }
-        
-        em.close();
-        emf.close();
         
         resultat += "]";
         System.out.println("4");

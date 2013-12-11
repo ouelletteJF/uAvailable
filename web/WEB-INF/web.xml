@@ -146,6 +146,16 @@
         <url-pattern>/acceptContactReq</url-pattern>
     </servlet-mapping>
     
+    <!-- Servlet AcceptContactRequest -->
+    <servlet>
+        <servlet-name>declineContactReq</servlet-name>
+        <servlet-class>com.uavailable.servlet.DeclineContactRequest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>declineContactReq</servlet-name>
+        <url-pattern>/declineContactReq</url-pattern>
+    </servlet-mapping>
+    
     <!-- Servlet DeleteContact -->
     <servlet>
         <servlet-name>deleteContact</servlet-name>
@@ -156,6 +166,13 @@
         <url-pattern>/deleteContact</url-pattern>
     </servlet-mapping>
     
+    <!-- Écouteurs -->
+    <listener>
+        <listener-class>com.uavailable.ecouteurs.ApplicationListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>com.uavailable.ecouteurs.SessionListener</listener-class>
+    </listener>
     
     <session-config>
         <session-timeout>

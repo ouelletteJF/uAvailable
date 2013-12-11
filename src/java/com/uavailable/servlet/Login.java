@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.uavailable.entites.Membre;
 import com.uavailable.entites.ToDoList;
+import com.uavailable.util.EntityManagerSingleton;
 import java.util.HashMap;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -70,14 +71,10 @@ public class Login extends HttpServlet {
 //        }
                 
         // Préparation de la récupération des données dans la BD
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("uAvailablePU");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction tx = em.getTransaction();
+        EntityManager em = EntityManagerSingleton.getInstance();
         
         Query qFindByEmail = em.createNamedQuery("Membre.findByCourriel");
         qFindByEmail.setParameter("courriel", u);
-        
-        tx.begin();
 
         List<Membre> resultats = qFindByEmail.getResultList();
         System.out.println("THE LIST : " + resultats);
@@ -97,9 +94,7 @@ public class Login extends HttpServlet {
             
             // Si l'authentification réussit...
             else    
-            { 
-                tx.commit();
-                
+            {                 
                 HttpSession session = request.getSession(true);
                 session.setAttribute("user", unMembre);
                 
@@ -113,8 +108,6 @@ public class Login extends HttpServlet {
             r = this.getServletContext().getRequestDispatcher("/login.jsp");
         }
         
-        em.close();
-        emf.close();
         r.forward(request, response);
     }
 
